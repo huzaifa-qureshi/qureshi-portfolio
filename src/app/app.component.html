@@ -1,4 +1,4 @@
-<div class="main-container toggle-true">
+<div class="main-container toggle">
     <div class="left">
         <div class="tl"></div>
         <div class="ml"></div>
@@ -10,8 +10,8 @@
         <div class="bc"></div>
     </div>
     <div class="right">
-        <div class="tr" id="tr"><hamburger-menu (navToggleValue)="toggleNav($event)"></hamburger-menu></div>
-        <div class="mr"></div>
-        <div class="br"></div>
+        <div class="tr toggle" id="tr"><hamburger-menu (navToggleValue)="toggleNav($event)"></hamburger-menu></div>
+        <div class="mr"><navigation></navigation></div>
+        <div class="br toggle"></div>
     </div>
 </div>

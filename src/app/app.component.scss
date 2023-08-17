@@ -2,6 +2,7 @@
     height: 100dvh;
     display: grid;
     grid-template-columns: 62px auto 60px;
+    transition: all 1s;
     .left , .center , .right{
         display: grid;
         grid-template-rows: 62px auto 60px;
@@ -20,6 +21,7 @@
         }
         .tr, .br{
             border-left: 2px solid var(--color-border);
+            transition: all 1s;
         }
         .mc{
             outline: 2px solid var(--color-border); ;
@@ -27,9 +29,15 @@
     }
 }
 
-.main-container &.toggle-true{
-    grid-template-columns: 62px auto 400px;
-    .right > .tr &.toggle-true  , .right > .br &.toggle-true  {
-        width: 400px;
+.main-container{
+    &.toggle-true{
+        grid-template-columns: 62px auto 300px;
+        transition: all 1s;
+        .right > .tr , .right > .br {      
+            &.toggle-true{
+                width: 300px;
+                transition: all 1s;
+            }   
+        }
     }
 }
