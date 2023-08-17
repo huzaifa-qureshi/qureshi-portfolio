@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'hamburger-menu',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./hamburger-menu.component.scss']
 })
 export class HamburgerMenuComponent {
-
+  @Output() navToggleValue = new EventEmitter;
+   
+  inputClick(event: any){
+    this.navToggleValue.emit(event.target.checked);
+  }
 }
