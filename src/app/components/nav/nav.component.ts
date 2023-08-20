@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { InfoComponent } from 'src/app/pages/info/info.component';
+import { MainComponent } from 'src/app/pages/main/main.page';
 
 @Component({
   selector: 'navigation',
@@ -9,23 +11,25 @@ export class NavComponent {
   public navItems = [
     { 
       name: 'Home',
-      link: '', 
+      path: 'main',
+      component: MainComponent,
     },
     { 
       name: 'Projects',
-      link: '', 
+      path: 'projects', 
     },
     { 
       name: 'Info',
-      link: '', 
+      path: 'info',
+      component : InfoComponent, 
     },
     { 
       name: 'Contact',
-      link: '', 
+      path: 'contact', 
     },
     { 
       name: 'Blog',
-      link: '', 
+      path: 'blog', 
     },
   ]
 }

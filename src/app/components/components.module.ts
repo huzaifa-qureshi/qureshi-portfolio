@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
 import { NavComponent } from './nav/nav.component';
 import { CursorComponent } from './cursor/cursor.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CursorComponent } from './cursor/cursor.component';
     CursorComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HamburgerMenuComponent,

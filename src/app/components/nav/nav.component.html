@@ -1,5 +1,5 @@
 <nav>
     <div *ngFor="let item of navItems">
-        <p class="montserrat-bold">{{item.name}}</p>
+        <p class="montserrat-bold"><a routerLink ="/{{item.path}}" routerLinkActive="active" ariaCurrentWhenActive="page">{{item.name}}</a></p>
     </div>
 </nav>

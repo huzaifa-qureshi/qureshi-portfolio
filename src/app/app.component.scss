@@ -5,10 +5,12 @@
     transition: all 1s;
     .left , .center , .right{
         display: grid;
-        grid-template-rows: 60px calc(100vh - 124px) 58px;
+        grid-template-rows: 60px calc(100dvh - 124px) 58px;
+        transition: grid-template-rows 1s;
         .tl , .tr , .bl , .br{
             height: 58px;
             width: 58px;
+            transition: height 1s;
         }
         .tl, .tr{
             border-bottom: 2px solid var(--color-border);
@@ -46,10 +48,11 @@
 .main-container{
     .left , .center , .right{
         &.transition{
-            grid-template-rows: 60px 0 calc(100vh - 60px);
-            transition: all 1s;
+            grid-template-rows: 60px 0 auto;
+            transition: grid-template-rows 1s ease-in-out;
             .bl, .br {
-                height: calc(100vh - 60px);
+                height: calc(100dvh - 60px);
+                transition: height 0.015s;
             }
         }
     }

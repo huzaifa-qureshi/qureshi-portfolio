@@ -1,8 +1,8 @@
 nav > div{
     margin-left: 80px;
-    p{
+    p > a{
         font-size: 36px;
-        cursor: pointer;
-        color: var(--color-border)
+        color: var(--color-border);
+        text-decoration: none;
     }
 }
