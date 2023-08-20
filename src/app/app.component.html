@@ -1,17 +1,21 @@
-<div class="main-container toggle">
-    <div class="left">
+<div class="main-container" [ngClass]="{'toggle': collapseState}">
+    <div class="left" [ngClass]="{'transition': transitionState}">
         <div class="tl"></div>
         <div class="ml"></div>
         <div class="bl"></div>
     </div>
-    <div class="center">
+    <div class="center" [ngClass]="{'transition': transitionState}" >
         <div class="tc"></div>
-        <div class="mc"><router-outlet></router-outlet></div>
+        <div class="mc" [@collapseOnLeave]="collapseState"><router-outlet></router-outlet></div>
         <div class="bc"></div>
     </div>
-    <div class="right">
-        <div class="tr toggle" id="tr"><hamburger-menu (navToggleValue)="toggleNav($event)"></hamburger-menu></div>
-        <div class="mr"><navigation></navigation></div>
-        <div class="br toggle"></div>
+    <div class="right" [ngClass]="{'transition': transitionState}">
+        <div class="tr" id="tr" [ngClass]="{'toggle': collapseState}"><hamburger-menu
+                (navToggleValue)="toggleNav($event)"></hamburger-menu></div>
+        <div class="mr">
+            <navigation></navigation>
+        </div>
+        <div class="br" [ngClass]="{'toggle': collapseState}"></div>
     </div>
 </div>
+<cursor></cursor>

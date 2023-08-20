@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class NavComponent {
   public navItems = [
     { 
+      name: 'Home',
+      link: '', 
+    },
+    { 
       name: 'Projects',
       link: '', 
     },

@@ -1,9 +1,7 @@
 .box{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 14px;
     .burger {
         position: relative;
         width: 30px;
