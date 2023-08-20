@@ -3,8 +3,8 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-info',
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss'],
+  templateUrl: './info.page.html',
+  styleUrls: ['./info.page.scss'],
   animations: [
     fadeInOnEnterAnimation({duration: 1500, delay: 1500})
   ]

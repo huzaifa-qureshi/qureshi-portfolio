@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InfoComponent } from 'src/app/pages/info/info.component';
+import { InfoComponent } from 'src/app/pages/info/info.page';
 import { MainComponent } from 'src/app/pages/main/main.page';
 
 @Component({
@@ -12,7 +12,6 @@ export class NavComponent {
     { 
       name: 'Home',
       path: 'main',
-      component: MainComponent,
     },
     { 
       name: 'Projects',
@@ -21,7 +20,6 @@ export class NavComponent {
     { 
       name: 'Info',
       path: 'info',
-      component : InfoComponent, 
     },
     { 
       name: 'Contact',

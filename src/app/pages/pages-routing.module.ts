@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InfoComponent } from './info/info.component';
+import { InfoComponent } from './info/info.page';
+import { ContactComponent } from './contact/contact.page';
 
 const routes: Routes = [
   {
@@ -14,8 +15,17 @@ const routes: Routes = [
       import('./main/main.module').then((m) => m.MainModule),
   },
   {
+    path: 'projects',
+    loadChildren: () =>
+      import('./projects/projects.module').then((m) => m.ProjectsModule),
+  },
+  {
     path: 'info',
     component: InfoComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   }
 ];
 
