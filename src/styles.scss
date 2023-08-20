@@ -2,6 +2,12 @@
 body{
     margin: 0;
     background-color: var(--color-tertiary);
-    overflow: hidden;
     cursor: none;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+
+body::-webkit-scrollbar{
+    display: none;
+}    

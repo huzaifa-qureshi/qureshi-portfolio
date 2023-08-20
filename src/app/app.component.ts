@@ -1,5 +1,6 @@
-import { Component} from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { fromEvent } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ export class AppComponent {
   title = 'qureshi-portfolio';
   collapseState: boolean = false;
   transitionState: any;
+  eventSubscription: any;
   
   constructor(private router: Router) {
     this.router.events.subscribe((ev) => {
@@ -20,6 +22,15 @@ export class AppComponent {
         }, 1200);
       }
     });
+
+    this.eventSubscription = fromEvent(window, "scroll").subscribe(e => {
+      this.onWindowScroll();
+  });
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+      this.router.navigateByUrl("/info")
   }
   
   toggleNav(event: boolean){
@@ -31,5 +42,5 @@ export class AppComponent {
     }
   }
 
-
+  
 }
