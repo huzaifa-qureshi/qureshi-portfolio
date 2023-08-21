@@ -1,6 +1,5 @@
 import { Component, HostListener} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { fromEvent } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,10 @@ export class AppComponent {
   collapseState: boolean = false;
   transitionState: any;
   eventSubscription: any;
-  
+  currentPosition: number = 0;
+  routerLinks = ["main", "projects", "info" , "contact"];
+  static indexLink: number;
+
   constructor(private router: Router) {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) { 
@@ -22,15 +24,21 @@ export class AppComponent {
         }, 1200);
       }
     });
-
-    this.eventSubscription = fromEvent(window, "scroll").subscribe(e => {
-      this.onWindowScroll();
-  });
   }
 
+
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-      this.router.navigateByUrl("/info")
+  onContentScrolled() {
+    let scroll = window.scrollY;
+    // check scroll down
+    if (scroll > this.currentPosition) {
+      setTimeout(() => {
+        AppComponent.indexLink = AppComponent.indexLink != 4 ? AppComponent.indexLink++ : 0;  
+        console.log(AppComponent.indexLink)
+        this.router.navigateByUrl("/" + this.routerLinks[AppComponent.indexLink++]);
+      }, 200);
+    } 
+    this.currentPosition = scroll;
   }
   
   toggleNav(event: boolean){
@@ -42,5 +50,6 @@ export class AppComponent {
     }
   }
 
-  
 }
+
+AppComponent.indexLink = 0;
