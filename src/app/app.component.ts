@@ -1,13 +1,19 @@
-import { Component, HostListener} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Output, ViewChild} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { MainSizeService } from './services/main-size.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent { 
+export class AppComponent implements AfterViewInit { 
   title = 'qureshi-portfolio';
+  
+  @ViewChild('mc')
+  main!: ElementRef;
+
+  maincontainersize: any;
   collapseState: boolean = false;
   transitionState: any;
   eventSubscription: any;
@@ -15,7 +21,7 @@ export class AppComponent {
   routerLinks = ["main", "projects", "info" , "contact"];
   static indexLink: number;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private screenSize: MainSizeService) {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) { 
         this.transitionState = true;
@@ -26,6 +32,10 @@ export class AppComponent {
     });
   }
 
+  ngAfterViewInit(){
+    this.maincontainersize = this.mainSize()
+    this.screenSize.setSize(this.maincontainersize)
+  }
 
   @HostListener('window:scroll', ['$event'])
   onContentScrolled() {
@@ -44,12 +54,20 @@ export class AppComponent {
   toggleNav(event: boolean){
     if (event == true){
       this.collapseState = true;
+      console.log(this.maincontainersize)
     }
     else{
       this.collapseState = false;
     }
   }
 
+  mainSize(){
+    let mainSize = {
+      height: this.main.nativeElement.offsetHeight,
+      width: this.main.nativeElement.offsetWidth,
+    }
+    return mainSize;
+  }
 }
 
 AppComponent.indexLink = 0;

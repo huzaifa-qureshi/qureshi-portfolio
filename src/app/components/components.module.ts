@@ -4,12 +4,14 @@ import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.componen
 import { NavComponent } from './nav/nav.component';
 import { CursorComponent } from './cursor/cursor.component';
 import { RouterModule } from '@angular/router';
+import { BgModelComponent } from './bg-model/bg-model.component';
 
 @NgModule({
   declarations: [
     HamburgerMenuComponent,
     NavComponent,
-    CursorComponent
+    CursorComponent,
+    BgModelComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     HamburgerMenuComponent,
     NavComponent,
-    CursorComponent
+    CursorComponent,
+    BgModelComponent
   ],
 })
 export class ComponentsModule { }

@@ -1,4 +1,9 @@
-<div class="container">
-    <p [@fadeInOnEnter]>projects works!</p>
+<div class="container" [@fadeInOnEnter]>
+    <div class="project-container">
+        <p *ngFor="let project of projects"
+            class="montserrat-bold">
+            {{project.name}}
+        </p>
+    </div>
 </div>
 

@@ -6,7 +6,7 @@
     </div>
     <div class="center" [ngClass]="{'transition': transitionState}" >
         <div class="tc"></div>
-        <div class="mc" [@collapseOnLeave]="collapseState"><router-outlet></router-outlet></div>
+        <div #mc class="mc"><router-outlet></router-outlet></div>
         <div class="bc"></div>
     </div>
     <div class="right" [ngClass]="{'transition': transitionState}">
