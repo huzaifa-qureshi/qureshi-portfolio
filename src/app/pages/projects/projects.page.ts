@@ -14,57 +14,50 @@ export class ProjectsPage {
     {
       name : 'Daily FrontEnd',
       githubLink : '',
-      projectLink: '',
+      projectLink: 'https://dailyfrontend.dev/',
+      caption: 'Design and Development | 2023',
     },
     {
       name : 'ScholarLink Scholarship Portal',
       githubLink : '',
-      projectLink: '',
+      projectLink: 'https://scholarship-portal-e69c1.web.app/#/home',
+      caption: 'Design and Development | 2023',
     },
     {
       name : 'ESP32 Bluetooth App',
       githubLink : '',
       projectLink: '',
+      caption: 'Development | 2023',
     },
     {
       name : 'Book Review App',
       githubLink : '',
       projectLink: '',
+      caption: 'Development | 2023',
     },
     {
       name : 'Django Final Project',
       githubLink : '',
       projectLink: '',
+      caption: 'Development | 2023',
     },
     {
       name : 'Flask Project',
       githubLink : '',
       projectLink: '',
+      caption: 'Development | 2023',
     },
     {
       name : 'Tech Tree',
       githubLink : '',
       projectLink: '',
+      caption: 'Design and Development | 2023',
     },
     {
-      name : 'Book Review App',
+      name : 'NDS',
       githubLink : '',
       projectLink: '',
-    },
-    {
-      name : 'Django Final Project',
-      githubLink : '',
-      projectLink: '',
-    },
-    {
-      name : 'Flask Project',
-      githubLink : '',
-      projectLink: '',
-    },
-    {
-      name : 'Tech Tree',
-      githubLink : '',
-      projectLink: '',
+      caption: 'Design and Development | 2023',
     },
   ]
 }

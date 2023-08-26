@@ -1,10 +1,10 @@
 <div class="main-container" [ngClass]="{'toggle': collapseState}">
     <div class="left" [ngClass]="{'transition': transitionState}">
         <div class="tl"></div>
-        <div class="ml"></div>
+        <div class="ml"><mode-switch></mode-switch></div>
         <div class="bl"></div>
     </div>
-    <div class="center" [ngClass]="{'transition': transitionState}" >
+    <div class="center" [ngClass]="{'transition': transitionState}">
         <div class="tc"></div>
         <div #mc class="mc"><router-outlet></router-outlet></div>
         <div class="bc"></div>

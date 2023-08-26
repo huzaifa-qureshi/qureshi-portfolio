@@ -5,29 +5,33 @@
     transition: all 1s;
     .left , .center , .right{
         display: grid;
-        grid-template-rows: 60px calc(100dvh - 124px) 58px;
+        grid-template-rows: 60px calc(100dvh - 124px) 60px;
         transition: grid-template-rows 1s;
         .tl , .tr , .bl , .br{
             height: 58px;
             width: 58px;
             transition: height 1s;
         }
-        .tl, .tr{
+        .tl, .tc, .tr{
             border-bottom: 2px solid var(--color-border);
         }
-        .tl, .bl{
+        .tl, .ml , .bl{
             border-right: 2px solid var(--color-border);
         }
-        .bl, .br{
+        .bl, .bc, .br{
             border-top: 2px solid var(--color-border);
         }
-        .tr, .br{
+        .tr, .mr, .br{
             border-left: 2px solid var(--color-border);
             transition: all 1s;
         }
         .mc{
             outline: 2px solid var(--color-border);
             // overflow-y: hidden;
+        }
+        .tl , .tr , .bl , .br , .tc , .bc , .mr , .ml{
+            background-color: var(--color-tertiary);
+            z-index: 2;
         }
     }
 }

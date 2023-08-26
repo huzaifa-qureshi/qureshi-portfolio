@@ -46,6 +46,7 @@ export class AppComponent implements AfterViewInit {
         AppComponent.indexLink = AppComponent.indexLink != 4 ? AppComponent.indexLink++ : 0;  
         console.log(AppComponent.indexLink)
         this.router.navigateByUrl("/" + this.routerLinks[AppComponent.indexLink++]);
+        window.scrollTo(0 , 0);
       }, 200);
     } 
     this.currentPosition = scroll;

@@ -5,13 +5,15 @@ import { NavComponent } from './nav/nav.component';
 import { CursorComponent } from './cursor/cursor.component';
 import { RouterModule } from '@angular/router';
 import { BgModelComponent } from './bg-model/bg-model.component';
+import { ModeSwitchComponent } from './mode-switch/mode-switch.component';
 
 @NgModule({
   declarations: [
     HamburgerMenuComponent,
     NavComponent,
     CursorComponent,
-    BgModelComponent
+    BgModelComponent,
+    ModeSwitchComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { BgModelComponent } from './bg-model/bg-model.component';
     HamburgerMenuComponent,
     NavComponent,
     CursorComponent,
-    BgModelComponent
+    BgModelComponent,
+    ModeSwitchComponent
   ],
 })
 export class ComponentsModule { }

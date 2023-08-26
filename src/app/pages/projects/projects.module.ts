@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProjectsPage } from './projects.page';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
-
+import { NgIconsModule } from '@ng-icons/core';
+import { bootstrapBoxArrowUpRight, bootstrapGithub } from '@ng-icons/bootstrap-icons';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     ProjectsRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgIconsModule.withIcons({bootstrapBoxArrowUpRight, bootstrapGithub}),
   ]
 })
 export class ProjectsModule { }

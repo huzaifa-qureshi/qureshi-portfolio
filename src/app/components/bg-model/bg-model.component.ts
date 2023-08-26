@@ -10,13 +10,15 @@ import * as THREE from 'three';
 })
 export class BgModelComponent implements OnInit, AfterViewInit {
   parentSize: any;
+  backgroundColor = 0xeeeeee;
+  shapeColor = 0x666666;
 
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
   // Shape Properties
-  @Input() public rotationSpeedX: number = 0.0050;
-  @Input() public rotationSpeedY: number = 0.0025;
+  @Input() public rotationSpeedX: number = 0.0025;
+  @Input() public rotationSpeedY: number = 0.00125;
   @Input() public size: number = 8000;
   @Input() public texture: string = "/assets/texture.jpg";
 
@@ -36,7 +38,7 @@ export class BgModelComponent implements OnInit, AfterViewInit {
   }
   // private loader = new THREE.TextureLoader();
   private geometry = new THREE.IcosahedronGeometry(8, 5);
-  private material = new THREE.MeshBasicMaterial({color: 0x666666 , wireframe: true});
+  private material = new THREE.MeshBasicMaterial({color: 0xeeeeee , wireframe: true});
   private shape: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
   private renderer !: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
@@ -52,7 +54,7 @@ export class BgModelComponent implements OnInit, AfterViewInit {
   private createScene() { 
     //* Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xeeeeee);
+    this.scene.background = new THREE.Color(0x222222);
     this.scene.add(this.shape);
     //*Camera
     let aspectRatio = this.getAspectRatio();

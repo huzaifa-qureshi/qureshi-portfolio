@@ -1,7 +1,14 @@
-div{
+.container{
     width: 100%;
     height: calc(100vh - 59px);
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    h2, p{
+        color: var(--color-border);
+    }
+    p{
+        margin-top: 5px;
+    }  
 }

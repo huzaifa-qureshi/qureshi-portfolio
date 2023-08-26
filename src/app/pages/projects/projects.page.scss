@@ -3,12 +3,34 @@
     height: calc(100vh - 59px);
     display: flex;
     .project-container{
+        padding: 10px 20px 30px 20px;
+        margin: 0 0 30px 0;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        position: fixed;
-        p{
-            font-size: 24px;
-            // margin: 0;
+        overflow: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        h2{
+            font-size: 36px;
+            color: var(--color-border);
+        }
+        .projects{
+            font-size: 28px;
+            margin: 16px 0 0 0;
+            color: var(--color-border);
+            a{
+                color: var(--color-border);
+                margin: 0 5px;
+            }
+        }
+        .project-caption{
+            margin: 0 0 16px 0;
+            font-size: 20px;
+            color: var(--color-border);
         }
     }  
+    .project-container::-webkit-scrollbar{
+        display: none;
+    }    
 }

@@ -4,6 +4,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { InfoComponent } from './info/info.page';
 import { ContactComponent } from './contact/contact.page';
 
+
 @NgModule({
   declarations: [
     InfoComponent,
