@@ -1,7 +1,7 @@
 <div class="container" [@fadeInOnEnter]>
     <div class="project-container">
         <h2 class="montserrat-bold">Projects</h2>
-        <ng-container *ngFor="let project of projects">
+        <ng-container *ngFor="let project of projects" #project>
             <p class="montserrat-medium projects">
                 {{project.name}}
                 <a href="{{project.githubLink}}" target="_blank">
