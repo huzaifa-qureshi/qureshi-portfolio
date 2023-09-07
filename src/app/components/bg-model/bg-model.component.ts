@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect } from '@angular/core';
 import { MainSizeService } from 'src/app/services/main-size.service';
+import { ModeService } from 'src/app/services/mode.service';
 import * as THREE from 'three';
 // import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 
@@ -8,10 +9,12 @@ import * as THREE from 'three';
   templateUrl: './bg-model.component.html',
   styleUrls: ['./bg-model.component.scss']
 })
-export class BgModelComponent implements OnInit, AfterViewInit {
+export class BgModelComponent implements AfterViewInit {
+  @Input() isdarkmode: boolean = false;
+  
   parentSize: any;
-  backgroundColor = 0xeeeeee; //0x222222
-  shapeColor = 0x666666; //0xeeeeee 
+  backgroundColor = this.isdarkmode? 0x222222 : 0xeeeeee; 
+  shapeColor = this.isdarkmode? 0xeeeeee : 0x666666; 
 
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
@@ -20,7 +23,6 @@ export class BgModelComponent implements OnInit, AfterViewInit {
   @Input() public rotationSpeedX: number = 0.0025;
   @Input() public rotationSpeedY: number = 0.00125;
   @Input() public size: number = 8000;
-  @Input() public texture: string = "/assets/texture.jpg";
 
   // Stage
   @Input() public cameraZ:number = 400;
@@ -29,7 +31,14 @@ export class BgModelComponent implements OnInit, AfterViewInit {
   @Input('farClipping') public farClippingPlane: number = 1000; 
 
 
-  constructor(private screenSize: MainSizeService){}
+  constructor(private screenSize: MainSizeService, private modeService: ModeService){
+    effect(() => {
+      this.isdarkmode = this.modeService.isdarkmode();
+      this.backgroundColor = this.isdarkmode? 0x222222 : 0xeeeeee; 
+      this.shapeColor = this.isdarkmode? 0xeeeeee : 0x666666; 
+      this.ngAfterViewInit();
+    });
+  }
 
   // Helper Properties(private)
   private camera!: THREE.PerspectiveCamera;
@@ -89,17 +98,13 @@ export class BgModelComponent implements OnInit, AfterViewInit {
     }());
   }
 
-  ngOnInit(){
-    
-  }
-
   ngAfterViewInit(){
     this.getScreenSize();
     this.createScene();
     this.startRenderingLoop();
   }
-  
+
   getScreenSize(){
-    this.screenSize.getSize.subscribe(size => this.parentSize = size)
+    this.screenSize.getSize.subscribe(size => this.parentSize = size);
   }
 }

@@ -1,7 +1,13 @@
-div{
+.container{
+    background-color: var(--color-tertiary);
     width: 100%;
     height: calc(100vh - 59px);
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;  
+    .contact-info{
+        color: var(--color-border);
+        width: 200px;
+        padding-right: 40px;
+    }
 }

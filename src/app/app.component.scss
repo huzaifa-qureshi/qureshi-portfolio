@@ -1,15 +1,16 @@
 .main-container{
     height: 100dvh;
     display: grid;
-    grid-template-columns: 60px auto 58px;
+    grid-template-columns: var(--frame-size) auto var(--frame-size-2);
     transition: all 1s;
+    // background-color: var(--color-tertiary);
     .left , .center , .right{
         display: grid;
-        grid-template-rows: 60px calc(100dvh - 124px) 60px;
+        grid-template-rows: var(--frame-size) calc(100dvh - var(--frame-size-3)) var(--frame-size);
         transition: grid-template-rows 1s;
         .tl , .tr , .bl , .br{
-            height: 58px;
-            width: 58px;
+            height: var(--frame-size-2);
+            width: var(--frame-size-2);
             transition: height 1s;
         }
         .tl, .tc, .tr{
@@ -38,7 +39,7 @@
 
 .main-container{
     &.toggle{
-        grid-template-columns: 60px auto 300px;
+        grid-template-columns: var(--frame-size) auto 300px;
         transition: all 1s;
         .right > .tr , .right > .br {      
             &.toggle{
@@ -52,10 +53,10 @@
 .main-container{
     .left , .center , .right{
         &.transition{
-            grid-template-rows: 60px 0 auto;
+            grid-template-rows: var(--frame-size) 0 auto;
             transition: grid-template-rows 1s ease-in-out;
             .bl, .br {
-                height: calc(100dvh - 60px);
+                height: calc(100dvh - var(--frame-size));
                 transition: height 0.015s;
             }
         }

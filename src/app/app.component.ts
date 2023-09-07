@@ -20,6 +20,7 @@ export class AppComponent implements AfterViewInit {
   currentPosition: number = 0;
   routerLinks = ["main", "projects", "info" , "contact"];
   static indexLink: number;
+  isdarkmode: boolean = false;
 
   constructor(private router: Router, private screenSize: MainSizeService) {
     this.router.events.subscribe((ev) => {
@@ -68,6 +69,10 @@ export class AppComponent implements AfterViewInit {
       width: this.main.nativeElement.offsetWidth,
     }
     return mainSize;
+  }
+
+  toggleMode(isdarkmode: boolean){
+    this.isdarkmode = isdarkmode;
   }
 }
 
