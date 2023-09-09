@@ -65,11 +65,11 @@
 @media only screen and (max-width: 600px) {
     .main-container{
         &.toggle{
-            grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 142px)) 140px;
+            grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 162px)) 160px;
             transition: all 0.5s;
             .right > .tr , .right > .br {      
                 &.toggle{
-                    width: 140px;
+                    width: 160px;
                     transition: all 0.5s;
                 }   
             }

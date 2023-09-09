@@ -33,16 +33,11 @@ export class BgModelComponent implements AfterViewInit {
 
   constructor(private screenSize: MainSizeService, private modeService: ModeService){
     effect(() => {
-
-      console.log("here");
       this.isdarkmode = this.modeService.isdarkmode();
       this.backgroundColor = this.isdarkmode? 0x222222 : 0xeeeeee; 
       this.shapeColor = this.isdarkmode? 0xeeeeee : 0x666666; 
       this.material.color = new THREE.Color(this.shapeColor);
       this.scene.background = new THREE.Color(this.backgroundColor);
-
-      // this.destroy();
-      // this.start();
     });
   }
 
@@ -112,13 +107,6 @@ export class BgModelComponent implements AfterViewInit {
     this.getScreenSize();
     this.createScene();
     this.startRenderingLoop();
-  }
-
-  destroy(){
-    console.log("boom")
-    this.material.dispose();
-    this.geometry.dispose();
-    this.renderer.dispose();
   }
 
   getScreenSize(){

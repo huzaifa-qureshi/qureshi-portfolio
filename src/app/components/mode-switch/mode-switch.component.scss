@@ -36,3 +36,9 @@
   transform: translateY(-1.5em);
   background-color: #eeeeee;
 }
+
+@media only screen and (max-width: 600px) {
+  .switch{
+    left : 26px
+  }
+}

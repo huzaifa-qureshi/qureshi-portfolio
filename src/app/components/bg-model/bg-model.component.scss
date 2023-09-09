@@ -1,6 +1,6 @@
 canvas{
     position: fixed;
     z-index: -1;
-    top: 60px;
-    left: 60px;
+    top: var(--frame-size);
+    left: var(--frame-size);
 }
