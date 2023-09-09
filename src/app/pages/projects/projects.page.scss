@@ -35,3 +35,16 @@
         display: none;
     }    
 }
+
+
+@media only screen and (max-width: 600px) {
+    .container > .project-container > h2{
+        font-size: 24px;
+    }
+    .container > .project-container > .projects{
+        font-size: 18px;
+    }
+    .container > .project-container > .project-caption{
+        font-size: 16px;
+    }
+}

@@ -33,10 +33,16 @@ export class BgModelComponent implements AfterViewInit {
 
   constructor(private screenSize: MainSizeService, private modeService: ModeService){
     effect(() => {
+
+      console.log("here");
       this.isdarkmode = this.modeService.isdarkmode();
       this.backgroundColor = this.isdarkmode? 0x222222 : 0xeeeeee; 
       this.shapeColor = this.isdarkmode? 0xeeeeee : 0x666666; 
-      this.ngAfterViewInit();
+      this.material.color = new THREE.Color(this.shapeColor);
+      this.scene.background = new THREE.Color(this.backgroundColor);
+
+      // this.destroy();
+      // this.start();
     });
   }
 
@@ -47,7 +53,7 @@ export class BgModelComponent implements AfterViewInit {
   }
   // private loader = new THREE.TextureLoader();
   private geometry = new THREE.IcosahedronGeometry(8, 5);
-  private material = new THREE.MeshBasicMaterial({color: this.shapeColor , wireframe: true});
+  private material = new THREE.MeshBasicMaterial({ color: this.shapeColor, wireframe: true});
   private shape: THREE.Mesh = new THREE.Mesh(this.geometry, this.material);
   private renderer !: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
@@ -99,9 +105,20 @@ export class BgModelComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(){
+    this.start();
+  }
+
+  start(){
     this.getScreenSize();
     this.createScene();
     this.startRenderingLoop();
+  }
+
+  destroy(){
+    console.log("boom")
+    this.material.dispose();
+    this.geometry.dispose();
+    this.renderer.dispose();
   }
 
   getScreenSize(){

@@ -1,12 +1,11 @@
 .main-container{
     height: 100dvh;
     display: grid;
-    grid-template-columns: var(--frame-size) auto var(--frame-size-2);
+    grid-template-columns: var(--frame-size) calc(100vw - var(--frame-size-3)) var(--frame-size-2);
     transition: all 1s;
-    // background-color: var(--color-tertiary);
     .left , .center , .right{
         display: grid;
-        grid-template-rows: var(--frame-size) calc(100dvh - var(--frame-size-3)) var(--frame-size);
+        grid-template-rows: var(--frame-size) calc(100vh - var(--frame-size-3)) var(--frame-size);
         transition: grid-template-rows 1s;
         .tl , .tr , .bl , .br{
             height: var(--frame-size-2);
@@ -28,7 +27,6 @@
         }
         .mc{
             outline: 2px solid var(--color-border);
-            // overflow-y: hidden;
         }
         .tl , .tr , .bl , .br , .tc , .bc , .mr , .ml{
             background-color: var(--color-tertiary);
@@ -39,7 +37,7 @@
 
 .main-container{
     &.toggle{
-        grid-template-columns: var(--frame-size) auto 300px;
+        grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 302px)) 300px;
         transition: all 1s;
         .right > .tr , .right > .br {      
             &.toggle{
@@ -62,3 +60,20 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    .main-container{
+        &.toggle{
+            grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 142px)) 140px;
+            transition: all 0.5s;
+            .right > .tr , .right > .br {      
+                &.toggle{
+                    width: 140px;
+                    transition: all 0.5s;
+                }   
+            }
+        }
+    }
+}
+   
