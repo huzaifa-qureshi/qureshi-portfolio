@@ -1,0 +1,17 @@
+.circle{
+    background-color: transparent;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 88svh;
+    left: 46vw;
+    border-radius: 50%;
+    border: none;
+    .next-btn{
+        color: var(--color-border);
+        background-color: transparent;
+        font-size: 30px;
+    }
+}

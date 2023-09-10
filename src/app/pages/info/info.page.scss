@@ -1,10 +1,11 @@
 .container{
     background-color: var(--color-tertiary);
     width: 100%;
-    height: calc(100vh - 59px);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;  
+    height: 100%;
+    display: grid;
+    align-content: stretch;
+    justify-content: end;
+    align-items: end;  
     .bio{
         width: 200px;
         padding-right: 40px;
@@ -14,10 +15,27 @@
             text-align: justify;
         }
     }
+    .certi{
+        padding: 0 40px 0 8px;
+        width: 200px;
+        display: grid;
+
+        p > .ibm-text{
+            font-size: 14px;
+            color: var(--color-border);
+            text-decoration: none;
+        }
+    }
 }
 
 @media only screen and (max-width: 600px) {
-    .container > .bio > p {
-        font-size: 14px;
+    .container{
+        align-items: center;
+        .bio > p {
+            font-size: 14px;
+        }
+        .certi > p > .ibm-text{
+            font-size: 12px;
+        }
     }
 }

@@ -1,31 +1,37 @@
+<loader *ngIf="isloading"></loader>
 <div
   class="main-container"
   [ngClass]="{
-    'toggle': collapseState,
+    toggle: collapseState,
     'dark-mode': isdarkmode,
     'mobile-size': breakpoint.isSmall
   }"
+  [@fadeInOnEnter]
 >
-  <div class="left" [ngClass]="{ 'transition': transitionState }">
+  <div class="left" [ngClass]="{ transition: transitionState }">
     <div class="tl"></div>
     <div class="ml">
       <mode-switch (isDarkMode)="toggleMode($event)"></mode-switch>
     </div>
     <div class="bl"></div>
   </div>
-  <div class="center" [ngClass]="{ 'transition': transitionState }">
+  <div class="center" [ngClass]="{ transition: transitionState }">
     <div class="tc"></div>
-    <div #mc class="mc"><router-outlet></router-outlet></div>
+    <div #mc class="mc">
+      <router-outlet>
+        <next-slide-btn *ngIf="breakpoint.isSmall"></next-slide-btn
+      ></router-outlet>
+    </div>
     <div class="bc"></div>
   </div>
-  <div class="right" [ngClass]="{ 'transition': transitionState }">
-    <div class="tr" id="tr" [ngClass]="{ 'toggle': collapseState }">
+  <div class="right" [ngClass]="{ transition: transitionState }">
+    <div class="tr" id="tr" [ngClass]="{ toggle: collapseState }">
       <hamburger-menu (navToggleValue)="toggleNav($event)"></hamburger-menu>
     </div>
     <div class="mr">
-      <navigation></navigation>
+      <navigation (navToggleValue)="toggleNav($event)"></navigation>
     </div>
-    <div class="br" [ngClass]="{ 'toggle': collapseState }"></div>
+    <div class="br" [ngClass]="{ toggle: collapseState }"></div>
   </div>
 </div>
 <cursor *ngIf="!breakpoint.isSmall"></cursor>

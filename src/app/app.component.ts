@@ -8,11 +8,16 @@ import {
 import { NavigationEnd, Router } from '@angular/router';
 import { MainSizeService } from './services/main-size.service';
 import { BreakpointService } from './services/breakpoint.service';
+import { NavService } from './services/nav.service';
+import { fadeInOnEnterAnimation } from 'angular-animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    fadeInOnEnterAnimation({duration: 1500, delay: 3000})
+  ]
 })
 export class AppComponent implements AfterViewInit {
   title = 'qureshi-portfolio';
@@ -24,15 +29,14 @@ export class AppComponent implements AfterViewInit {
   collapseState: boolean = false;
   transitionState: any;
   eventSubscription: any;
-  currentPosition: number = 0;
-  routerLinks = ['main', 'projects', 'info', 'contact'];
-  static indexLink: number;
   isdarkmode: boolean = false;
+  isloading : boolean = true;
 
   constructor(
     private router: Router,
     private screenSize: MainSizeService,
     public breakpoint: BreakpointService,
+    private navservice: NavService,
   ) {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
@@ -47,24 +51,12 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.maincontainersize = this.mainSize();
     this.screenSize.setSize(this.maincontainersize);
+    this.loading();
   }
 
   @HostListener('window:scroll', ['$event'])
   onContentScrolled() {
-    let scroll = window.scrollY;
-    // check scroll down
-    if (scroll > this.currentPosition) {
-      setTimeout(() => {
-        AppComponent.indexLink =
-          AppComponent.indexLink != 4 ? AppComponent.indexLink++ : 0;
-        console.log(AppComponent.indexLink);
-        this.router.navigateByUrl(
-          '/' + this.routerLinks[AppComponent.indexLink++],
-        );
-        window.scrollTo(0, 0);
-      }, 200);
-    }
-    this.currentPosition = scroll;
+    this.navservice.OnScroll();
   }
 
   toggleNav(event: boolean) {
@@ -86,6 +78,10 @@ export class AppComponent implements AfterViewInit {
   toggleMode(isdarkmode: boolean) {
     this.isdarkmode = isdarkmode;
   }
-}
 
-AppComponent.indexLink = 0;
+  loading(){
+    setTimeout(() =>{ 
+        this.isloading = false; 
+    }, 3000);
+  }
+}

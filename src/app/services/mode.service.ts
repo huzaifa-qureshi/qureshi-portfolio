@@ -7,11 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ModeService {
   isdarkmode = signal(false)
 
-  constructor() {
-    effect(() => {
-      console.log("heylol", this.isdarkmode());
-    });
-  }
+  constructor() {}
 
   setSize(){
     this.isdarkmode.update(value => !value) 

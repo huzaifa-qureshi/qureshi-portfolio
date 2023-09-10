@@ -4,16 +4,21 @@
     height: calc(100vh - 59px);
     display: flex;
     justify-content: flex-end;
-    align-items: center;  
+    align-items: flex-end;  
     .contact-info{
         color: var(--color-border);
         width: 200px;
         padding-right: 40px;
+        margin-bottom: 100px;
+        p > a{
+            color: var(--color-border);
+            text-decoration: none;
+        }
     }
 }
 
 @media only screen and (max-width: 600px) {
     .container > .contact-info {
-        padding-right: 10px;
+        padding-right: 0;
     }
 }

@@ -5,6 +5,11 @@ nav > div{
         color: var(--color-border);
         text-decoration: none;
     }
+    p > a.active{
+        color: var(--color-secondary);
+
+    }
+
 }
 
 @media only screen and (max-width: 600px) {

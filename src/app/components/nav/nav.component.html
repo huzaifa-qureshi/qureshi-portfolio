@@ -5,6 +5,7 @@
         routerLink="/{{ item.path }}"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
+        (click)="inputClick($event)"
         >{{ item.name }}</a
       >
     </p>

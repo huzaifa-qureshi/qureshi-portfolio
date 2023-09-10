@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { InfoComponent } from 'src/app/pages/info/info.page';
-import { MainComponent } from 'src/app/pages/main/main.page';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'navigation',
@@ -30,4 +28,10 @@ export class NavComponent {
       path: 'blog', 
     },
   ]
+
+  @Output() navToggleValue = new EventEmitter;
+   
+  inputClick(event: any){
+    this.navToggleValue.emit(event.target.checked);
+  }
 }

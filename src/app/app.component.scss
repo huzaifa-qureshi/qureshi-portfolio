@@ -1,5 +1,5 @@
 .main-container{
-    height: 100dvh;
+    height: 100svh;
     display: grid;
     grid-template-columns: var(--frame-size) calc(100vw - var(--frame-size-3)) var(--frame-size-2);
     transition: all 1s;

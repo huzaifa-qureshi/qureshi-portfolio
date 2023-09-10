@@ -1,5 +1,5 @@
 :root{
-    --color-primary: #303841;
+    --color-primary: #303841bb;
     --color-secondary: #3A4750;
     --color-tertiary: #EEEEEE;
     --color-accent: #D72323;
@@ -11,11 +11,11 @@
 }
 
 :root .dark-mode{
-    --color-primary: #303841;
-    --color-secondary: #3A4750;
+    --color-primary: #303841bb;
+    --color-secondary: #ff5959dd;
     --color-tertiary: #222222;
     --color-accent: #D72323;
-    --color-medium: #FF5959;
+    --color-medium: #3A4750;
     --color-border: #EEEEEE;
 }
 
