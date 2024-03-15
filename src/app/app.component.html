@@ -26,7 +26,7 @@
   </div>
   <div class="right" [ngClass]="{ transition: transitionState }">
     <div class="tr" id="tr" [ngClass]="{ toggle: collapseState }">
-      <hamburger-menu (navToggleValue)="toggleNav($event)"></hamburger-menu>
+      <hamburger-menu [uncheckmenu]="collapseState" (navToggleValue)="toggleNav($event)"></hamburger-menu>
     </div>
     <div class="mr">
       <navigation (navToggleValue)="toggleNav($event)"></navigation>
@@ -35,3 +35,5 @@
   </div>
 </div>
 <cursor *ngIf="!breakpoint.isSmall"></cursor>
+<hovering-tooltip [tooltip]="tooltip" *ngIf="showToolTip"></hovering-tooltip>
+```

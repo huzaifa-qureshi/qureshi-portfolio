@@ -10,6 +10,7 @@ import { NextSlideBtnComponent } from './next-slide-btn/next-slide-btn.component
 import { NgIconsModule } from '@ng-icons/core';
 import { ionArrowDownCircleOutline} from '@ng-icons/ionicons';
 import { LoaderComponent } from './loader/loader.component';
+import { HoveringTooltipComponent } from './hovering-tooltip/hovering-tooltip.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoaderComponent } from './loader/loader.component';
     BgModelComponent,
     ModeSwitchComponent,
     NextSlideBtnComponent,
-    LoaderComponent
+    LoaderComponent,
+    HoveringTooltipComponent
   ],
   imports: [
     CommonModule,
@@ -33,8 +35,8 @@ import { LoaderComponent } from './loader/loader.component';
     BgModelComponent,
     ModeSwitchComponent,
     NextSlideBtnComponent,
-    LoaderComponent
-
+    LoaderComponent,
+    HoveringTooltipComponent
   ],
 })
 export class ComponentsModule { }

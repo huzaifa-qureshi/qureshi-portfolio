@@ -10,6 +10,7 @@ import { MainSizeService } from './services/main-size.service';
 import { BreakpointService } from './services/breakpoint.service';
 import { NavService } from './services/nav.service';
 import { fadeInOnEnterAnimation } from 'angular-animations';
+import { debounceTime, fromEvent, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,8 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
 })
 export class AppComponent implements AfterViewInit {
   title = 'qureshi-portfolio';
+  tooltip = '';
+  showToolTip:boolean = false;
 
   @ViewChild('mc')
   main!: ElementRef;
@@ -31,6 +34,7 @@ export class AppComponent implements AfterViewInit {
   eventSubscription: any;
   isdarkmode: boolean = false;
   isloading : boolean = true;
+  isScrolling: boolean = false;
 
   constructor(
     private router: Router,
@@ -43,21 +47,50 @@ export class AppComponent implements AfterViewInit {
         this.transitionState = true;
         setTimeout(() => {
           this.transitionState = false;
-        }, 1200);
+        }, 1000);
       }
     });
   }
 
+  //#region My Scroll Logic
+  
+  //Set Debounc on scroll event
+  private scrollEvent$ = fromEvent(window, 'wheel').pipe(debounceTime(1000)); 
+
   ngAfterViewInit() {
+    //Perform action every time the user scrolls
+    this.scrollEvent$.subscribe((event: Event) => {
+      //If the user is already scrolling, do nothing
+      event.preventDefault(); 
+      //If User keeps scrolling, alert them (Easter egg)
+      const timeoutId = setTimeout(() => {
+        this.showToolTipFn("Hey I said Scroll once!");
+      }, 4000); // Set timeout to 5 seconds
+      const finalizeAction = () => {
+        this.isScrolling = false;
+        clearTimeout(timeoutId); // Clear the timeout when the action is done
+      };
+
+      //Scroll Down
+      if ((event as WheelEvent).deltaY > 0) { 
+        console.log("Scrolling down", 500);
+        this.navservice.OnScroll(true).finally(() => {
+          this.isScrolling = false; 
+        });
+      //Scroll Up
+      } else {
+        this.navservice.OnScroll(false).finally(() => {
+          this.isScrolling = false; 
+        });
+      }  
+    });
+  
     this.maincontainersize = this.mainSize();
     this.screenSize.setSize(this.maincontainersize);
     this.loading();
+    this.showToolTipFn("Scroll once to see Magic!");
   }
-
-  @HostListener('window:scroll', ['$event'])
-  onContentScrolled() {
-    this.navservice.OnScroll();
-  }
+  //#endregion
 
   toggleNav(event: boolean) {
     if (event == true) {
@@ -83,5 +116,15 @@ export class AppComponent implements AfterViewInit {
     setTimeout(() =>{ 
         this.isloading = false; 
     }, 3000);
+  }
+
+  showToolTipFn(tip:string, showAfter:number = 8000) {
+    this.tooltip = tip;
+    setTimeout(() => {
+      this.showToolTip = true;
+      setTimeout(() => {
+        this.showToolTip = false;
+      }, 3000); 
+    }, showAfter);
   }
 }
