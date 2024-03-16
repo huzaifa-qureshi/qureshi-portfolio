@@ -5,7 +5,7 @@
     transition: all 1s;
     .left , .center , .right{
         display: grid;
-        grid-template-rows: var(--frame-size) calc(100vh - var(--frame-size-3)) var(--frame-size);
+        grid-template-rows: var(--frame-size) calc(100dvh - var(--frame-size-3)) var(--frame-size);
         transition: grid-template-rows 1s;
         .tl , .tr , .bl , .br{
             height: var(--frame-size-2);
