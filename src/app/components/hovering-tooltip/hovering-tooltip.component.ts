@@ -1,7 +1,7 @@
 import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
-  selector: 'hovering-tooltip',
+  selector: 'tooltip',
   templateUrl: './hovering-tooltip.component.html',
   styleUrls: ['./hovering-tooltip.component.scss']
 })

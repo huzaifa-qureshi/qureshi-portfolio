@@ -54,7 +54,7 @@ export class AppComponent implements AfterViewInit {
 
   //#region My Scroll Logic
   
-  //Set Debounc on scroll event
+  //Set Debounce on scroll event
   private scrollEvent$ = fromEvent(window, 'wheel').pipe(debounceTime(1000)); 
 
   ngAfterViewInit() {
@@ -65,7 +65,7 @@ export class AppComponent implements AfterViewInit {
       //If User keeps scrolling, alert them (Easter egg)
       const timeoutId = setTimeout(() => {
         this.showToolTipFn("Hey I said Scroll once!");
-      }, 4000); // Set timeout to 5 seconds
+      }, 4000); // Set timeout to 4 seconds
       const finalizeAction = () => {
         this.isScrolling = false;
         clearTimeout(timeoutId); // Clear the timeout when the action is done

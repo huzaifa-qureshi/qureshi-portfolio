@@ -35,5 +35,5 @@
   </div>
 </div>
 <cursor *ngIf="!breakpoint.isSmall"></cursor>
-<hovering-tooltip [tooltip]="tooltip" *ngIf="showToolTip"></hovering-tooltip>
+<tooltip [tooltip]="tooltip" *ngIf="showToolTip && !breakpoint.isSmall"></tooltip>
 ```
