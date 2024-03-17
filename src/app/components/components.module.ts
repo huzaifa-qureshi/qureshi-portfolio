@@ -12,6 +12,7 @@ import { ionArrowDownCircleOutline} from '@ng-icons/ionicons';
 import { LoaderComponent } from './loader/loader.component';
 import { HoveringTooltipComponent } from './hovering-tooltip/hovering-tooltip.component';
 import { SpaceshipComponent } from './spaceship/spaceship.component';
+import { SpaceComponent } from './space/space.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SpaceshipComponent } from './spaceship/spaceship.component';
     NextSlideBtnComponent,
     LoaderComponent,
     HoveringTooltipComponent,
-    SpaceshipComponent
+    SpaceshipComponent,
+    SpaceComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { SpaceshipComponent } from './spaceship/spaceship.component';
     NextSlideBtnComponent,
     LoaderComponent,
     HoveringTooltipComponent,
-    SpaceshipComponent
+    SpaceshipComponent,
+    SpaceComponent,
   ],
 })
 export class ComponentsModule { }

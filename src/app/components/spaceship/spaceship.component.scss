@@ -4,7 +4,7 @@
         height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
-        border-bottom: 20px solid #000; 
+        border-bottom: 20px solid var(--color-border); 
         transition: top 1.2s, left 1.2s , transform 0.6s;
         transform-origin: top;
         pointer-events: none;
