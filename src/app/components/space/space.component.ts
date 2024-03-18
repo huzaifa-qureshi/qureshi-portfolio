@@ -456,9 +456,9 @@ export class SpaceComponent implements OnInit, AfterViewInit {
   @HostListener('document:touchstart', ['$event'])
   onTouchStart(event: TouchEvent) {
     console.log(event);
-    if (event.touches[0].clientX < (window.innerWidth / 2)) {
+    if (event.touches[0].clientX < (window.innerWidth / 3)) {
       this.moveLeft();
-    } else {
+    } else if (event.touches[0].clientX > (window.innerWidth * 2 / 3)) {
       this.moveRight();
     }
   }
