@@ -23,10 +23,6 @@ export class NavComponent {
       name: 'Contact',
       path: 'contact', 
     },
-    { 
-      name: 'Blog',
-      path: 'blog', 
-    },
   ]
 
   @Output() navToggleValue = new EventEmitter;

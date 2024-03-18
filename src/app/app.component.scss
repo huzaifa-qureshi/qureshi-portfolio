@@ -2,15 +2,15 @@
     height: 100svh;
     display: grid;
     grid-template-columns: var(--frame-size) calc(100vw - var(--frame-size-3)) var(--frame-size-2);
-    transition: all 1s;
+    transition: grid-template-columns 1s, width 1s , height 1s;
     .left , .center , .right{
         display: grid;
         grid-template-rows: var(--frame-size) calc(100dvh - var(--frame-size-3)) var(--frame-size);
-        transition: grid-template-rows 1s;
+        transition: grid-template-rows 1s, width 1s , height 1s;
         .tl , .tr , .bl , .br{
             height: var(--frame-size-2);
             width: var(--frame-size-2);
-            transition: height 1s;
+            transition: height 1s, width 1s;
         }
         .tl, .tc, .tr{
             border-bottom: 2px solid var(--color-border);
@@ -20,10 +20,11 @@
         }
         .bl, .bc, .br{
             border-top: 2px solid var(--color-border);
+            transition: height 1s, width 1s;
         }
         .tr, .mr, .br{
             border-left: 2px solid var(--color-border);
-            transition: all 1s;
+            transition: height 1s, width 1s;
         }
         .mc{
             outline: 2px solid var(--color-border);
@@ -38,11 +39,11 @@
 .main-container{
     &.toggle{
         grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 302px)) 300px;
-        transition: all 1s;
+        transition: grid-template-columns 1s, width 1s , height 1s;
         .right > .tr , .right > .br {      
             &.toggle{
                 width: 300px;
-                transition: all 1s;
+                transition: width 1s, height 1s;
             }   
         }
     }
@@ -67,11 +68,11 @@
         &.toggle{
             //grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 162px)) 160px;
             grid-template-columns: var(--frame-size) 0 calc(100vw - var(--frame-size));
-            transition: all 0.5s;
+            transition: grid-template-columns 0.5s;
             .right > .tr , .right > .br {      
                 &.toggle{
                     width: calc(100vw - var(--frame-size));
-                    transition: all 0.5s;
+                    transition: width 0.5s;
                 }   
             }
         }
