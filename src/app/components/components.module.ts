@@ -11,7 +11,6 @@ import { NgIconsModule } from '@ng-icons/core';
 import { ionArrowDownCircleOutline} from '@ng-icons/ionicons';
 import { LoaderComponent } from './loader/loader.component';
 import { HoveringTooltipComponent } from './hovering-tooltip/hovering-tooltip.component';
-import { SpaceshipComponent } from './spaceship/spaceship.component';
 import { SpaceComponent } from './space/space.component';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { SpaceComponent } from './space/space.component';
     NextSlideBtnComponent,
     LoaderComponent,
     HoveringTooltipComponent,
-    SpaceshipComponent,
     SpaceComponent
   ],
   imports: [
@@ -41,7 +39,6 @@ import { SpaceComponent } from './space/space.component';
     NextSlideBtnComponent,
     LoaderComponent,
     HoveringTooltipComponent,
-    SpaceshipComponent,
     SpaceComponent,
   ],
 })
