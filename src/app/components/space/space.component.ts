@@ -59,11 +59,11 @@ export class SpaceComponent implements OnInit, AfterViewInit {
     if (this.breakpoint.isSmall) {
       if (this.leftButton && this.leftButton.nativeElement) {
         this.leftButton.nativeElement.addEventListener('touchstart', this.moveLeft.bind(this));
-        this.leftButton.nativeElement.addEventListener('touchend', this.stopmoving.bind(this));
+        this.leftButton.nativeElement.addEventListener('touchend', this.onTouchEnd.bind(this));
       }
       if (this.rightButton && this.rightButton.nativeElement) {
         this.rightButton.nativeElement.addEventListener('touchstart', this.moveRight.bind(this));
-        this.rightButton.nativeElement.addEventListener('touchend', this.stopmoving.bind(this));
+        this.rightButton.nativeElement.addEventListener('touchend', this.onTouchEnd.bind(this));
       }
     }
 
@@ -441,6 +441,11 @@ export class SpaceComponent implements OnInit, AfterViewInit {
   }
 
   //For Mobile
+  onTouchEnd(event: TouchEvent) {
+    event.preventDefault();
+    this.stopmoving();
+  }
+
   moveRight(){
     this.ship.thrusting = true;
     this.ship.rotation = -SHIPROTSPD / 180 * Math.PI / FPS;
@@ -461,11 +466,11 @@ export class SpaceComponent implements OnInit, AfterViewInit {
     clearInterval(this.spaceInterval);
     if (this.leftButton && this.leftButton.nativeElement) {
       this.leftButton.nativeElement.removeEventListener('touchstart', this.moveLeft.bind(this));
-      this.leftButton.nativeElement.removeEventListener('touchend', this.stopmoving.bind(this));
+      this.leftButton.nativeElement.removeEventListener('touchend', this.onTouchEnd.bind(this));
     }
     if (this.rightButton && this.rightButton.nativeElement) {
       this.rightButton.nativeElement.removeEventListener('touchstart', this.moveRight.bind(this));
-      this.rightButton.nativeElement.removeEventListener('touchend', this.stopmoving.bind(this));
+      this.rightButton.nativeElement.removeEventListener('touchend', this.onTouchEnd.bind(this));
     }
     this.ship = null;
     this.aestroids = [];
