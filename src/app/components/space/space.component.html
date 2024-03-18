@@ -1,7 +1,7 @@
 <canvas #space></canvas>
-<div class="circle r" (click)="moveRight()" *ngIf="breakpoint.isSmall">
+<div class="circle r" (click)="moveRight()" *ngIf="breakpoint.isSmall" #leftButton>
     <ng-icon class="right-btn" name="ionArrowBackOutline"></ng-icon>
 </div>
-<div class="circle l" (click)="moveLeft()" *ngIf="breakpoint.isSmall">
+<div class="circle l" (click)="moveLeft()" *ngIf="breakpoint.isSmall" #rightButton>
     <ng-icon class="left-btn" name="ionArrowForwardOutline"></ng-icon>
 </div>

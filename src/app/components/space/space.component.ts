@@ -11,7 +11,7 @@ const SHIPTHRUST = 5;
 const SHIPROTSPD = 360;
 const SHIPEXPLODETIME = 0.3;
 const LASERSPD = 500;
-const AESTROIDNUM = 10;
+const AESTROIDNUM = 14;
 const AESTROIDSPD = 40;
 const AESTROIDSIZE = 100;
 const AESTROIDVERT = 10;
@@ -24,6 +24,10 @@ const AESTROIDJAG = 0.25;
 })
 export class SpaceComponent implements OnInit, AfterViewInit {
   @ViewChild('space', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+  //controls for mobile
+  @ViewChild('leftButton') leftButton: ElementRef<any> | undefined;
+  @ViewChild('rightButton') rightButton: ElementRef<any> | undefined;
+
   aestroids: any[] = [];
   ship: any;
 
@@ -51,9 +55,21 @@ export class SpaceComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    //Restricting touch to controls only
+    if (this.breakpoint.isSmall) {
+      if (this.leftButton && this.leftButton.nativeElement) {
+        this.leftButton.nativeElement.addEventListener('touchstart', this.moveLeft.bind(this));
+        this.leftButton.nativeElement.addEventListener('touchend', this.onTouchEnd.bind(this));
+      }
+      if (this.rightButton && this.rightButton.nativeElement) {
+        this.rightButton.nativeElement.addEventListener('touchstart', this.moveRight.bind(this));
+        this.rightButton.nativeElement.addEventListener('touchend', this.onTouchEnd.bind(this));
+      }
+    }
+
     const canvas = this.canvas.nativeElement;
     const context = canvas.getContext('2d');
-    
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
@@ -424,46 +440,7 @@ export class SpaceComponent implements OnInit, AfterViewInit {
     this.ship.rotation = 0;
   }
 
-  collision(){
-    //check for aestroid collision
-    for(var i = 0; i < this.aestroids.length; i++){
-      if (this.distBetweenAestroids(this.ship.x, this.ship.y, this.aestroids[i].x, this.aestroids[i].y) < this.ship.radius + this.aestroids[i].size){
-      // Calculate the deflection angle
-      const deflectionAngle = Math.atan2(this.ship.y - this.aestroids[i].y, this.ship.x - this.aestroids[i].x);
-
-      // Calculate the new velocities for the ship and aestroid
-      const shipNewVelX = (this.ship.thrust.x + this.aestroids[i].xvel) / 2;
-      const shipNewVelY = (this.ship.thrust.y + this.aestroids[i].yvel) / 2;
-      const aestroidNewVelX = (this.aestroids[i].xvel + this.ship.thrust.x) / 2;
-      const aestroidNewVelY = (this.aestroids[i].yvel + this.ship.thrust.y) / 2;
-
-      // Update the velocities of the ship and aestroid
-      this.ship.thrust.x = shipNewVelX;
-      this.ship.thrust.y = shipNewVelY;
-      this.aestroids[i].xvel = aestroidNewVelX;
-      this.aestroids[i].yvel = aestroidNewVelY;
-
-      // Move the ship and aestroid slightly apart to avoid continuous collision
-      this.ship.x += Math.cos(deflectionAngle) * (this.ship.radius + this.aestroids[i].size);
-      this.ship.y += Math.sin(deflectionAngle) * (this.ship.radius + this.aestroids[i].size);
-      this.aestroids[i].x -= Math.cos(deflectionAngle) * (this.ship.radius + this.aestroids[i].size);
-      this.aestroids[i].y -= Math.sin(deflectionAngle) * (this.ship.radius + this.aestroids[i].size);
-      }
-    }
-  }
-
-  //For Mobile:
-  @HostListener('document:touchstart', ['$event'])
-  onTouchStart(event: TouchEvent) {
-    console.log(event);
-    if (event.touches[0].clientX < (window.innerWidth / 3)) {
-      this.moveLeft();
-    } else if (event.touches[0].clientX > (window.innerWidth * 2 / 3)) {
-      this.moveRight();
-    }
-  }
-
-  @HostListener('document:touchend', ['$event'])
+  //For Mobile
   onTouchEnd(event: TouchEvent) {
     event.preventDefault();
     this.stopmoving();
@@ -487,6 +464,14 @@ export class SpaceComponent implements OnInit, AfterViewInit {
   ngOnDestroy() {
     clearInterval(this.lasersInterval);
     clearInterval(this.spaceInterval);
+    if (this.leftButton && this.leftButton.nativeElement) {
+      this.leftButton.nativeElement.removeEventListener('touchstart', this.moveLeft.bind(this));
+      this.leftButton.nativeElement.removeEventListener('touchend', this.onTouchEnd.bind(this));
+    }
+    if (this.rightButton && this.rightButton.nativeElement) {
+      this.rightButton.nativeElement.removeEventListener('touchstart', this.moveRight.bind(this));
+      this.rightButton.nativeElement.removeEventListener('touchend', this.onTouchEnd.bind(this));
+    }
     this.ship = null;
     this.aestroids = [];
   }

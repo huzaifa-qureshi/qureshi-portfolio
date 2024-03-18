@@ -8,6 +8,7 @@ canvas {
 
 .circle{
     font-size: 32px;
+    color: var(--color-border);
     background-color: transparent;
     position: fixed;
     z-index: 1;
@@ -16,7 +17,7 @@ canvas {
     justify-content: center;
     top: 80dvh;
     border-radius: 50%;
-    border: black solid;
+    border: var(--color-border) solid;
     .btn-left, .btn-right{
         color: var(--color-border);
         background-color: transparent;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { fadeInOnEnterAnimation } from 'angular-animations';
 
 @Component({
@@ -10,5 +10,8 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
   ]
 })
 export class InfoComponent {
-
+  @HostListener('window:resize')
+  onWindowResize() {
+    location.reload();
+  }
 }
