@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild, effect } from '@angular/core';
+import { BreakpointService } from 'src/app/services/breakpoint.service';
 import { ModeService } from 'src/app/services/mode.service';
 
 //tutorial followed for this game: https://www.youtube.com/watch?v=H9CSWMxJx84
@@ -37,7 +38,7 @@ export class SpaceComponent implements OnInit, AfterViewInit {
   private lasersInterval : any;
   private spaceInterval : any;
 
-  constructor(private modeService: ModeService) {
+  constructor(private modeService: ModeService, public breakpoint: BreakpointService) {
     effect(() => {
       this.isdarkmode = this.modeService.isdarkmode();
       this.tertiaryColor = this.isdarkmode? '#222222' : '#eeeeee';
@@ -449,6 +450,38 @@ export class SpaceComponent implements OnInit, AfterViewInit {
       this.aestroids[i].y -= Math.sin(deflectionAngle) * (this.ship.radius + this.aestroids[i].size);
       }
     }
+  }
+
+  //For Mobile:
+  @HostListener('document:touchstart', ['$event'])
+  onTouchStart(event: TouchEvent) {
+    console.log(event);
+    if (event.touches[0].clientX < (window.innerWidth / 2)) {
+      this.moveLeft();
+    } else {
+      this.moveRight();
+    }
+  }
+
+  @HostListener('document:touchend', ['$event'])
+  onTouchEnd(event: TouchEvent) {
+    event.preventDefault();
+    this.stopmoving();
+  }
+
+  moveRight(){
+    this.ship.thrusting = true;
+    this.ship.rotation = -SHIPROTSPD / 180 * Math.PI / FPS;
+  }
+
+  moveLeft(){
+    this.ship.thrusting = true;
+    this.ship.rotation = SHIPROTSPD / 180 * Math.PI / FPS;
+  }
+
+  stopmoving(){
+    this.ship.rotation = 0;
+    this.ship.thrusting = false;
   }
 
   ngOnDestroy() {

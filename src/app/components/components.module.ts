@@ -8,7 +8,7 @@ import { BgModelComponent } from './bg-model/bg-model.component';
 import { ModeSwitchComponent } from './mode-switch/mode-switch.component';
 import { NextSlideBtnComponent } from './next-slide-btn/next-slide-btn.component';
 import { NgIconsModule } from '@ng-icons/core';
-import { ionArrowDownCircleOutline} from '@ng-icons/ionicons';
+import { ionArrowDownCircleOutline, ionArrowBackOutline, ionArrowForwardOutline} from '@ng-icons/ionicons';
 import { LoaderComponent } from './loader/loader.component';
 import { HoveringTooltipComponent } from './hovering-tooltip/hovering-tooltip.component';
 import { SpaceComponent } from './space/space.component';
@@ -28,7 +28,7 @@ import { SpaceComponent } from './space/space.component';
   imports: [
     CommonModule,
     RouterModule,
-    NgIconsModule.withIcons({ionArrowDownCircleOutline})
+    NgIconsModule.withIcons({ionArrowDownCircleOutline, ionArrowBackOutline, ionArrowForwardOutline})
   ],
   exports: [
     HamburgerMenuComponent,

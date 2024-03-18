@@ -5,3 +5,27 @@ canvas {
     height: 100%;
     background-color: transparent;
 }
+
+.circle{
+    font-size: 32px;
+    background-color: transparent;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 80dvh;
+    border-radius: 50%;
+    border: black solid;
+    .btn-left, .btn-right{
+        color: var(--color-border);
+        background-color: transparent;
+        font-size: 30px;
+    }
+}
+.r {
+    left: 54px;
+}
+.l {
+    left: calc(100vw - 54px - 36px);
+}
