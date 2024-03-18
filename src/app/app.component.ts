@@ -92,6 +92,13 @@ export class AppComponent implements AfterViewInit {
   }
   //#endregion
 
+  @HostListener('swipedown', ['$event'])
+  onSwipeDown(event: any) {
+    this.navservice.OnScroll(true).finally(() => {
+      this.isScrolling = false;
+    });
+  }
+
   toggleNav(event: boolean) {
     if (event == true) {
       this.collapseState = true;
