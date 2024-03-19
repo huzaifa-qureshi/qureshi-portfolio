@@ -12,6 +12,7 @@ import { ionArrowDownCircleOutline, ionArrowBackOutline, ionArrowForwardOutline}
 import { LoaderComponent } from './loader/loader.component';
 import { HoveringTooltipComponent } from './hovering-tooltip/hovering-tooltip.component';
 import { SpaceComponent } from './space/space.component';
+import { ImageTooltipComponent } from './image-tooltip/image-tooltip.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SpaceComponent } from './space/space.component';
     NextSlideBtnComponent,
     LoaderComponent,
     HoveringTooltipComponent,
-    SpaceComponent
+    SpaceComponent,
+    ImageTooltipComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { SpaceComponent } from './space/space.component';
     LoaderComponent,
     HoveringTooltipComponent,
     SpaceComponent,
+    ImageTooltipComponent
   ],
 })
 export class ComponentsModule { }

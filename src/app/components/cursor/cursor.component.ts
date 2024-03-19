@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { CursorService } from 'src/app/services/cursor.service';
 
 @Component({
   selector: 'cursor',
@@ -10,15 +11,10 @@ export class CursorComponent {
   left:any;
   expand=false;
 
-  constructor() {}
-
-
-  @HostListener('document:click', ['$event'])
-  onOver() {
-     this.expand = true;
-     setTimeout(() => {
-      this.expand = false;
-     }, 1000);
+  constructor(private cursorService: CursorService) {
+    this.cursorService.expandCursor$.subscribe(expand => {
+      this.expand = expand;
+    });
   }
 
   @HostListener('document:mousemove', ['$event'])

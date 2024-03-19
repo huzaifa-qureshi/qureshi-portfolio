@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CursorService } from 'src/app/services/cursor.service';
 
 @Component({
   selector: 'navigation',
@@ -24,9 +25,18 @@ export class NavComponent {
       path: 'contact', 
     },
   ]
-
   @Output() navToggleValue = new EventEmitter;
-   
+  
+  constructor(private cursorService: CursorService) {}
+  
+  onLinkHover() {
+    this.cursorService.expandCursor(true);
+  }
+
+  onLinkLeave() {
+    this.cursorService.expandCursor(false);
+  }
+
   inputClick(event: any){
     this.navToggleValue.emit(event.target.checked);
   }

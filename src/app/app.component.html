@@ -11,7 +11,9 @@
   <div class="left" [ngClass]="{ transition: transitionState }">
     <div class="tl"></div>
     <div class="ml">
-      <mode-switch (isDarkMode)="toggleMode($event)"></mode-switch>
+      <mode-switch (isDarkMode)="toggleMode($event)"
+      (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"
+      ></mode-switch>
     </div>
     <div class="bl"></div>
   </div>
@@ -26,7 +28,9 @@
   </div>
   <div class="right" [ngClass]="{ transition: transitionState }">
     <div class="tr" id="tr" [ngClass]="{ toggle: collapseState }">
-      <hamburger-menu [uncheckmenu]="collapseState" (navToggleValue)="toggleNav($event)"></hamburger-menu>
+      <hamburger-menu [uncheckmenu]="collapseState" (navToggleValue)="toggleNav($event)"
+      (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"
+      ></hamburger-menu>
     </div>
     <div class="mr">
       <navigation (navToggleValue)="toggleNav($event)"></navigation>

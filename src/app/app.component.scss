@@ -39,7 +39,7 @@
 .main-container{
     &.toggle{
         grid-template-columns: var(--frame-size) calc(100vw - (var(--frame-size) + 302px)) 300px;
-        transition: grid-template-columns 1s, width 1s , height 1s;
+        transition: grid-template-columns 1s;
         .right > .tr , .right > .br {      
             &.toggle{
                 width: 300px;
@@ -53,7 +53,7 @@
     .left , .center , .right{
         &.transition{
             grid-template-rows: var(--frame-size) 0 auto;
-            transition: grid-template-rows 1s ease-in-out;
+            transition: grid-template-rows 1wis ease-in-out;
             .bl, .br {
                 height: calc(100dvh - var(--frame-size));
                 transition: height 0.015s;

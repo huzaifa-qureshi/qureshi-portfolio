@@ -11,6 +11,7 @@ import { BreakpointService } from './services/breakpoint.service';
 import { NavService } from './services/nav.service';
 import { fadeInOnEnterAnimation } from 'angular-animations';
 import { debounceTime, fromEvent, throttleTime } from 'rxjs';
+import { CursorService } from './services/cursor.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent implements AfterViewInit {
   title = 'qureshi-portfolio';
   tooltip = '';
   showToolTip:boolean = false;
-
+  scroolOnceToolTipCount: number = 0;
+  currentRoute: string = '';
   @ViewChild('mc')
   main!: ElementRef;
 
@@ -41,9 +43,11 @@ export class AppComponent implements AfterViewInit {
     private screenSize: MainSizeService,
     public breakpoint: BreakpointService,
     private navservice: NavService,
+    private cursorService: CursorService,
   ) {
     this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
+        this.currentRoute = ev.urlAfterRedirects;
         this.transitionState = true;
         setTimeout(() => {
           this.transitionState = false;
@@ -51,7 +55,7 @@ export class AppComponent implements AfterViewInit {
       }
     });
   }
-
+  
   //#region My Scroll Logic
   
   //Set Debounce on scroll event
@@ -64,7 +68,10 @@ export class AppComponent implements AfterViewInit {
       event.preventDefault(); 
       //If User keeps scrolling, alert them (Easter egg)
       const timeoutId = setTimeout(() => {
-        this.showToolTipFn("Hey I said Scroll once!");
+        if(this.scroolOnceToolTipCount % 8 == 6){
+          this.showToolTipFn("Hey I said Scroll once!");
+          this.scroolOnceToolTipCount++;
+        }
       }, 4000); // Set timeout to 4 seconds
       const finalizeAction = () => {
         this.isScrolling = false;
@@ -88,7 +95,9 @@ export class AppComponent implements AfterViewInit {
     this.maincontainersize = this.mainSize();
     this.screenSize.setSize(this.maincontainersize);
     this.loading();
-    this.showToolTipFn("Scroll once to see Magic!");
+    if(this.currentRoute == '/main'){
+      this.showToolTipFn("Scroll once to see Magic!");
+    }
   }
   //#endregion
 
@@ -112,6 +121,14 @@ export class AppComponent implements AfterViewInit {
     this.isdarkmode = isdarkmode;
   }
 
+  onLinkHover() {
+    this.cursorService.expandCursor(true);
+  }
+
+  onLinkLeave() {
+    this.cursorService.expandCursor(false);
+  }
+
   loading(){
     setTimeout(() =>{ 
         this.isloading = false; 
@@ -126,5 +143,10 @@ export class AppComponent implements AfterViewInit {
         this.showToolTip = false;
       }, 3000); 
     }, showAfter);
+  }
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    location.reload();
   }
 }

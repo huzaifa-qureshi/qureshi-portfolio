@@ -21,6 +21,7 @@
         display: grid;
 
         p > .ibm-text{
+            cursor: none;
             font-size: 14px;
             color: var(--color-border);
             text-decoration: none;

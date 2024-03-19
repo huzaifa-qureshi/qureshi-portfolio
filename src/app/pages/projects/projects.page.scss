@@ -20,15 +20,18 @@
             font-size: 28px;
             margin: 16px 0 0 0;
             color: var(--color-border);
+            max-width: fit-content;
             a{
                 color: var(--color-border);
                 margin: 0 5px;
+                cursor: none;
             }
         }
         .project-caption{
             margin: 0 0 16px 0;
             font-size: 20px;
             color: var(--color-border);
+            max-width: fit-content;
         }
     }  
     .project-container::-webkit-scrollbar{

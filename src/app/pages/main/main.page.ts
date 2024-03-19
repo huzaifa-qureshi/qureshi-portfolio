@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { fadeInOnEnterAnimation } from 'angular-animations';
+import { CursorService } from 'src/app/services/cursor.service';
 
 @Component({
   selector: 'app-main',
@@ -10,8 +11,13 @@ import { fadeInOnEnterAnimation } from 'angular-animations';
   ]
 })
 export class MainComponent {
-  @HostListener('window:resize')
-  onWindowResize() {
-    location.reload();
+  constructor(private cursorService: CursorService) {}
+  
+  onLinkHover() {
+    this.cursorService.expandCursor(true);
+  }
+
+  onLinkLeave() {
+    this.cursorService.expandCursor(false);
   }
 }

@@ -1,6 +1,7 @@
 <nav>
   <div *ngFor="let item of navItems">
-    <p class="montserrat-bold">
+    <p class="montserrat-bold"
+    (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()">
       <a
         routerLink="/{{ item.path }}"
         routerLinkActive="active"
