@@ -68,7 +68,7 @@ export class AppComponent implements AfterViewInit {
       event.preventDefault(); 
       //If User keeps scrolling, alert them (Easter egg)
       const timeoutId = setTimeout(() => {
-        if(this.scroolOnceToolTipCount % 8 == 6){
+        if(this.scroolOnceToolTipCount % 4 == 3){
           this.showToolTipFn("Hey I said Scroll once!");
           this.scroolOnceToolTipCount++;
         }
@@ -95,7 +95,8 @@ export class AppComponent implements AfterViewInit {
     this.maincontainersize = this.mainSize();
     this.screenSize.setSize(this.maincontainersize);
     this.loading();
-    if(this.currentRoute == '/main'){
+    console.log(this.currentRoute)
+    if(this.currentRoute == '/main' || this.currentRoute == '' ){
       this.showToolTipFn("Scroll once to see Magic!");
     }
   }
