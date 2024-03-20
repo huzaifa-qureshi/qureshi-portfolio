@@ -174,6 +174,7 @@ export class SpaceComponent implements OnInit, AfterViewInit {
           for (var i = 0 ; i < this.aestroids.length; i++){
             if(this.distBetweenAestroids(this.ship.x, this.ship.y, this.aestroids[i].x, this.aestroids[i].y) < this.ship.radius + this.aestroids[i].size){
               this.destroyship();
+              this.destroyAestroid(i);
             }
           }
         }

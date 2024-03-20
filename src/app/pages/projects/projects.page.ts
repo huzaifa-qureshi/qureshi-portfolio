@@ -14,7 +14,7 @@ const projects =[
   {
     name : 'ScholarLink Scholarship Portal',
     githubLink : 'https://github.com/Shees-Ali/ned-scholarship-portal.git',
-    projectLink: 'https://scholarship-portal-e69c1.web.app/#/home',
+    projectLink: '',
     caption: 'Design and Development | 2023',
     image : './assets/Images/p2-i1.png',
   },
@@ -37,14 +37,14 @@ const projects =[
     githubLink : 'https://github.com/huzaifa-qureshi/agfzb-CloudAppDevelopment_Capstone',
     projectLink: '',
     caption: 'Development | 2023',
-    image : '',
+    image : './assets/Images/p5-i1.jpg',
   },
   {
     name : 'ESP32 Bluetooth App',
     githubLink : 'https://github.com/huzaifa-qureshi/ESP32-BLE',
     projectLink: 'https://twisty-cowbell-dea.notion.site/ESP32-Bluetooth-App-157aafea1fb64dc4a90a6fb6c9ec13f9',
     caption: 'Development | 2023',
-    image : '',
+    image : './assets/Images/p6-i1.jpg',
   },
 ]
 

@@ -3,22 +3,67 @@
     width: 100%;
     height: calc(100dvh - 59px);
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;  
+    .call-to-action{
+        margin-left: 40px;
+        align-self: flex-start;
+        color: var(--color-border);
+        font-size: 2rem;
+        line-height: 40px;
+        a {
+            color: var(--color-border);
+            text-decoration: none;
+            position: relative; 
+            cursor: none;
+          }
+          a:hover {
+            font-weight: 500;
+            transition: font-weight 0.25s ease-out;
+          }
+          a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            border-radius: 4px;
+            height: 4px;
+            top: 42px;
+            bottom: 0;
+            left: 0;
+            background: currentcolor;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+          }
+          a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+          }
+    }
     .contact-info{
         color: var(--color-border);
-        width: 200px;
+        width: fit-content;
         padding-right: 40px;
         margin-bottom: 100px;
         p > a{
             color: var(--color-border);
             text-decoration: none;
+            cursor: none;
         }
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .container > .contact-info {
-        padding-right: 0;
+    .container{
+        align-items: center;
+        .call-to-action{
+            font-size: 22px;
+            margin: 40px 12px;
+            text-align: justify;
+        }  
+        .contact-info{
+            padding-right: 0;
+        }
     }
 }
