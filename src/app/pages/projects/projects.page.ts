@@ -13,8 +13,8 @@ const projects =[
   },
   {
     name : 'ScholarLink Scholarship Portal',
-    githubLink : 'https://github.com/Shees-Ali/ned-scholarship-portal.git',
-    projectLink: '',
+    githubLink : '',
+    projectLink: 'https://scholarship-portal-e69c1.web.app/#/home',
     caption: 'Design and Development | 2023',
     image : './assets/Images/p2-i1.png',
   },
