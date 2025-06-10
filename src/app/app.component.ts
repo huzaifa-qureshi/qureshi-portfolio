@@ -68,10 +68,10 @@ export class AppComponent implements AfterViewInit {
       scrollTrigger: {
         trigger: '.main-container',
         start: '1 top',
-        end: '100% top',
+        end: '160% top',
         pin: true,
         scrub: 4,
-        markers: true,
+        //markers: true,
         onUpdate: (self) => {
           //console.log('Curtain progress:', self.progress);
         }

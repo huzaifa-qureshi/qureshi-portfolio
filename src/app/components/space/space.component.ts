@@ -70,7 +70,7 @@ export class SpaceComponent implements OnInit, AfterViewInit {
     const canvas = this.canvas.nativeElement;
     const context = canvas.getContext('2d');
 
-    canvas.width = window.innerWidth;
+    canvas.width = window.innerWidth - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--frame-size'));
     canvas.height = window.innerHeight;
     
     this.lasersInterval = setInterval(() => {
@@ -305,15 +305,15 @@ export class SpaceComponent implements OnInit, AfterViewInit {
 
   @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent) { 
     switch(event.key){
-      case 'ArrowUp':
-        this.ship.thrusting = true;
-        break;
-      case 'ArrowLeft':
-        this.ship.rotation = SHIPROTSPD / 180 * Math.PI / FPS;
-        break;
-      case 'ArrowRight':
-        this.ship.rotation = -SHIPROTSPD / 180 * Math.PI / FPS;
-        break;
+      // case 'ArrowUp':
+      //   this.ship.thrusting = true;
+      //   break;
+      // case 'ArrowLeft':
+      //   this.ship.rotation = SHIPROTSPD / 180 * Math.PI / FPS;
+      //   break;
+      // case 'ArrowRight':
+      //   this.ship.rotation = -SHIPROTSPD / 180 * Math.PI / FPS;
+      //   break;
       case 'w':
         this.ship.thrusting = true;
         break;
@@ -329,15 +329,15 @@ export class SpaceComponent implements OnInit, AfterViewInit {
 
   @HostListener('document:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
     switch(event.key){
-      case 'ArrowUp':
-        this.ship.thrusting = false;
-        break;
-      case 'ArrowLeft':
-        this.ship.rotation = 0;
-        break;
-      case 'ArrowRight':
-        this.ship.rotation = 0;
-        break;
+      // case 'ArrowUp':
+      //   this.ship.thrusting = false;
+      //   break;
+      // case 'ArrowLeft':
+      //   this.ship.rotation = 0;
+      //   break;
+      // case 'ArrowRight':
+      //   this.ship.rotation = 0;
+      //   break;
       case 'w':
         this.ship.thrusting = false;
         break;
