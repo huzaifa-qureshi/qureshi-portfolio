@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, effect, OnDestroy, HostListener } from '@angular/core';
 import { MainSizeService } from 'src/app/services/main-size.service';
 import { ModeService } from 'src/app/services/mode.service';
+import { Subscription } from 'rxjs';
 import * as THREE from 'three';
 // import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 
@@ -9,12 +10,14 @@ import * as THREE from 'three';
   templateUrl: './bg-model.component.html',
   styleUrls: ['./bg-model.component.scss']
 })
-export class BgModelComponent implements AfterViewInit {
+export class BgModelComponent implements AfterViewInit, OnDestroy {
   @Input() isdarkmode: boolean = false;
   
   parentSize: any;
   backgroundColor = this.isdarkmode? 0x222222 : 0xeeeeee; 
   shapeColor = this.isdarkmode? 0xeeeeee : 0x666666; 
+  private sizeSubscription?: Subscription;
+  private isInitialized = false;
 
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
@@ -75,20 +78,23 @@ export class BgModelComponent implements AfterViewInit {
       this.farClippingPlane
     )
     this.camera.position.z = this.cameraZ;
-  }
-
-  private getAspectRatio() {
-    // return this.canvas.clientWidth / this.canvas.clientHeight;
-    return window.innerWidth/ window.innerHeight;
-  }
-
-  //Start Rendering 
+  }  private getAspectRatio() {
+    // Use actual canvas dimensions for aspect ratio
+    const canvasWidth = this.canvas.clientWidth || this.canvas.offsetWidth;
+    const canvasHeight = this.canvas.clientHeight || this.canvas.offsetHeight;
+    return canvasWidth > 0 && canvasHeight > 0 ? canvasWidth / canvasHeight : window.innerWidth / window.innerHeight;
+  }  //Start Rendering 
   private startRenderingLoop() {
     //* Renderer
     // Use canvas element in template
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
     this.renderer.setPixelRatio(devicePixelRatio);
-    this.renderer.setSize(this.parentSize.width, this.parentSize.height);
+    
+    // Use actual canvas dimensions instead of service dimensions
+    const canvasWidth = this.canvas.clientWidth || this.canvas.offsetWidth;
+    const canvasHeight = this.canvas.clientHeight || this.canvas.offsetHeight;
+    
+    this.renderer.setSize(canvasWidth, canvasHeight);
 
     let component: BgModelComponent = this;
     (function render() {
@@ -98,18 +104,61 @@ export class BgModelComponent implements AfterViewInit {
       component.renderer.render(component.scene, component.camera);
     }());
   }
-
   ngAfterViewInit(){
     this.start();
   }
 
   start(){
     this.getScreenSize();
-    this.createScene();
-    this.startRenderingLoop();
+  }  
+  
+  getScreenSize(){
+    this.sizeSubscription = this.screenSize.getSize.subscribe(size => {
+      this.parentSize = size;
+      
+      // Only initialize the scene and start rendering when we have valid dimensions
+      if (size.width > 0 && size.height > 0) {
+        if (!this.isInitialized) {
+          // Wait a bit for the canvas to be properly sized by CSS
+
+          setTimeout(() => {
+            this.createScene();
+            this.startRenderingLoop();
+            this.isInitialized = true;
+          }, 0);
+        } 
+        else {
+          // Update renderer size using actual canvas dimensions
+          const canvasWidth = this.canvas.clientWidth || this.canvas.offsetWidth;
+          const canvasHeight = this.canvas.clientHeight || this.canvas.offsetHeight;
+          
+          if (canvasWidth > 0 && canvasHeight > 0) {
+            this.renderer.setSize(canvasWidth, canvasHeight);
+            this.camera.aspect = canvasWidth / canvasHeight;
+            this.camera.updateProjectionMatrix();
+          }
+        }
+      }
+    });
+  }
+  
+  ngOnDestroy() {
+    if (this.sizeSubscription) {
+      this.sizeSubscription.unsubscribe();
+    }
   }
 
-  getScreenSize(){
-    this.screenSize.getSize.subscribe(size => this.parentSize = size);
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    if (this.isInitialized && this.renderer && this.camera) {
+      const canvasWidth = this.canvas.clientWidth || this.canvas.offsetWidth;
+      const canvasHeight = this.canvas.clientHeight || this.canvas.offsetHeight;
+      
+      if (canvasWidth > 0 && canvasHeight > 0) {
+        this.renderer.setSize(canvasWidth, canvasHeight);
+        this.camera.aspect = canvasWidth / canvasHeight;
+        this.camera.updateProjectionMatrix();
+      }
+    }
   }
 }
