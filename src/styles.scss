@@ -5,7 +5,8 @@ body{
     background-color: var(--color-tertiary);
     width: 100vw;
     cursor: none;
-    overflow: hidden;
+    // overflow: hidden;
+    overflow-x: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }

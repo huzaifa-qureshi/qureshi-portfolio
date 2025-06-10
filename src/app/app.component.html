@@ -1,5 +1,6 @@
 <loader *ngIf="isloading"></loader>
-<div
+<cursor *ngIf="!breakpoint.isSmall"></cursor>
+<!-- <div
   class="main-container"
   [ngClass]="{
     toggle: collapseState,
@@ -39,5 +40,57 @@
   </div>
 </div>
 <cursor *ngIf="!breakpoint.isSmall"></cursor>
-<tooltip [tooltip]="tooltip" *ngIf="showToolTip && !breakpoint.isSmall"></tooltip>
-```
+<tooltip [tooltip]="tooltip" *ngIf="showToolTip && !breakpoint.isSmall"></tooltip> -->
+
+<!-- Version 2 -->
+<div
+  class="main-container"
+  [ngClass]="{
+    toggle: collapseState,
+    'dark-mode': isdarkmode,
+    'mobile-size': breakpoint.isSmall
+  }"
+>
+<div class="top">
+  <div class="tl"></div>
+  <div class="tc">
+    <mode-switch (isDarkMode)="toggleMode($event)"
+      (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"
+      ></mode-switch>
+  </div>
+  <div class="tr"></div>
+</div>
+<div class="screen-1">
+  <div class="ml"></div>  <div class="mc">
+    <app-main></app-main>
+  </div>
+  <div class="mr"></div>
+</div>
+<div class="screen-2">
+  <div class="bl"></div>
+  <div class="bc">
+    <app-projects></app-projects>
+  </div>
+  <div class="br"></div>
+</div>
+<div class="screen-3">
+  <div class="bl"></div>
+  <div class="bc">
+    <app-info></app-info>
+  </div>
+  <div class="br"></div>
+</div>
+<div class="screen-4">
+  <div class="bl"></div>
+  <div class="bc">
+    <app-contact></app-contact>
+  </div>
+  <div class="br"></div>
+</div>
+<div class="bottom">
+  <div class="bl"></div>
+  <div class="bc">
+  </div>
+  <div class="br"></div>
+</div>
+</div>

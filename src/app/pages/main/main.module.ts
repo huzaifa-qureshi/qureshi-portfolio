@@ -15,6 +15,9 @@ import { bootstrapGithub, bootstrapLinkedin } from '@ng-icons/bootstrap-icons';
     MainRoutingModule,
     ComponentsModule,
     NgIconsModule.withIcons({bootstrapGithub, bootstrapLinkedin})
+  ],
+  exports:[
+    MainComponent
   ]
 })
 export class MainModule { }

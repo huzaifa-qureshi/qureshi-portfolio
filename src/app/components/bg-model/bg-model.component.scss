@@ -3,4 +3,7 @@ canvas{
     z-index: -1;
     top: var(--frame-size);
     left: var(--frame-size);
+    // width: calc(100vw - (var(--frame-size) * 2));
+    // height: calc(100vh - (var(--frame-size) * 2));
+    // display: block;
 }

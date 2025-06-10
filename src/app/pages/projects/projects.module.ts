@@ -16,6 +16,9 @@ import { bootstrapBoxArrowUpRight, bootstrapGithub } from '@ng-icons/bootstrap-i
     ProjectsRoutingModule,
     ComponentsModule,
     NgIconsModule.withIcons({bootstrapBoxArrowUpRight, bootstrapGithub}),
+  ],
+  exports: [
+    ProjectsPage
   ]
 })
 export class ProjectsModule { }

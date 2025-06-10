@@ -12,8 +12,8 @@ export class ImageTooltipComponent {
   constructor() {}
 
   @HostListener('document:mousemove', ['$event'])
-    onMousemove($event: { pageY: number; pageX: number; }) {
-      this.top=($event.pageY - 30)+ "px";
-      this.left= ($event.pageX + 36)+ "px";
+    onMousemove($event: { clientX: number; clientY: number; }) {
+      this.top=($event.clientY - 30)+ "px";
+      this.left= ($event.clientX + 36)+ "px";
   }
 }

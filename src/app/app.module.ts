@@ -4,6 +4,9 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
+import { PagesModule } from './pages/pages.module';
+import { ProjectsModule } from './pages/projects/projects.module';
+import { MainModule } from './pages/main/main.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { ComponentsModule } from './components/components.module';
     ComponentsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    PagesModule,
+    MainModule,
+    ProjectsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
