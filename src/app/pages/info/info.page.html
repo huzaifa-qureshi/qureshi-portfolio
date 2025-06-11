@@ -1,4 +1,3 @@
-<space></space>
 <div class="container" [@fadeInOnEnter]>
   <div class="bio montserrat">
     <p class="no-select"
@@ -12,11 +11,12 @@
   <div class="certi">
     <p class="montserrat">
       <a href="https://www.coursera.org/account/accomplishments/professional-cert/LWFGQU66TWCK" target="_blank" class="ibm-text no-select"
-        (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"  
-        >IBM FullStack Software Developer Certification
-        <ng-icon name="bootstrapBoxArrowUpRight"></ng-icon></a
+      (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"  
+      >IBM FullStack Software Developer Certification
+      <ng-icon name="bootstrapBoxArrowUpRight"></ng-icon></a
       >
     </p>
   </div>
 </div>
 <tooltip [tooltip]="tooltip" *ngIf="showToolTip && !breakpoint.isSmall"></tooltip>
+<space></space>

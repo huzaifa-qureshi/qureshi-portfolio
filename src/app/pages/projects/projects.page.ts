@@ -5,11 +5,25 @@ import { CursorService } from 'src/app/services/cursor.service';
 
 const projects =[
   {
-    name : 'Daily FrontEnd',
+    name : 'Blueprint Project Management System',
     githubLink : '',
-    projectLink: 'https://dailyfrontend.dev/',
-    caption: 'Design and Development | 2023',
-    image : './assets/Images/p1-i1.png',
+    projectLink: 'https://love-doner.vercel.app/main',
+    caption: 'Design and Development | Client | 2025',
+    image : './assets/Images/p8-i1.png',
+  },
+  {
+    name : 'Loverdoner POS & KMS System',
+    githubLink : '',
+    projectLink: 'https://blueprint-frontend-seven.vercel.app/',
+    caption: 'Design and Development | Client | 2024',
+    image : './assets/Images/p7-i1.png',
+  },
+  {
+    name : 'Mecanize App',
+    githubLink : '',
+    projectLink: 'https://mecanize.vercel.app/',
+    caption: 'Development | Client | 2024',
+    image : '',
   },
   {
     name : 'ScholarLink Scholarship Portal',
@@ -17,6 +31,13 @@ const projects =[
     projectLink: 'https://scholarship-portal-e69c1.web.app/#/home',
     caption: 'Design and Development | 2023',
     image : './assets/Images/p2-i1.png',
+  }, 
+  {
+    name : 'Daily FrontEnd',
+    githubLink : '',
+    projectLink: 'https://dailyfrontend.dev/',
+    caption: 'Design and Development | 2023',
+    image : './assets/Images/p1-i1.png',
   },
   {
     name : 'Debate Society Website',

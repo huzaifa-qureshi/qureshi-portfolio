@@ -17,7 +17,7 @@ export class InfoComponent implements AfterViewInit {
   constructor(private cursorService: CursorService, public breakpoint: BreakpointService) {}
   
   ngAfterViewInit() {
-    this.showToolTipFn('Use AWD or Arrow Keys to move the ship', 5000);
+    //this.showToolTipFn('Use AWD or Arrow Keys to move the ship', 5000);
   }
   onLinkHover() {
     this.cursorService.expandCursor(true);

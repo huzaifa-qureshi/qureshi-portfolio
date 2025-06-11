@@ -1,11 +1,13 @@
 .container{
     //background-color: var(--color-tertiary);
-    width: 100%;
+    width: 92%;
     height: 100%;
     display: grid;
     align-content: stretch;
     justify-content: end;
-    align-items: end;  
+    align-items: center;  
+    position: absolute;
+    z-index: 10;
     .bio{
         width: 200px;
         padding-right: 40px;
@@ -32,6 +34,7 @@
 @media only screen and (max-width: 600px) {
     .container{
         align-items: center;
+        width: 80%;
         .bio > p {
             font-size: 14px;
         }

@@ -7,19 +7,13 @@ body{
     cursor: none;
     // overflow: hidden;
     overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
 }
 
-body::-webkit-scrollbar{
-    display: none;
-}    
-
 @media only screen and (max-width: 600px) {
-    html {
-      overflow: hidden;
-    }
-    body{
-        cursor: auto;
-    }
+    // html {
+    //   overflow-x: hidden;
+    // }
+    // body{
+    //     cursor: auto;
+    // }
 }
