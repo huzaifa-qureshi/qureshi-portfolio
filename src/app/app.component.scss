@@ -173,3 +173,39 @@
         }
     }
 }
+
+// Mobile-specific optimizations
+@media only screen and (max-width: 768px) {
+    .main-container{
+        // Reduce visual complexity on mobile
+        .mc {
+            transform: translateZ(0); // Force hardware acceleration
+            -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+        }
+        
+        // Optimize performance for mobile animations
+        .screen-2, .screen-3, .screen-4, .bottom {
+            will-change: height, opacity; // Optimize for animation
+            transform: translateZ(0); // Force hardware acceleration
+        }
+        
+        // Prevent bounce scrolling on iOS
+        .mc {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    }
+}
+
+// Reduce motion for users with motion sensitivity
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
