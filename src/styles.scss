@@ -5,15 +5,11 @@ body{
     background-color: var(--color-tertiary);
     width: 100vw;
     cursor: none;
-    // overflow: hidden;
     overflow-x: hidden;
 }
 
 @media only screen and (max-width: 600px) {
-    // html {
-    //   overflow-x: hidden;
-    // }
-    // body{
-    //     cursor: auto;
-    // }
+    body{
+        cursor: auto;
+    }
 }
