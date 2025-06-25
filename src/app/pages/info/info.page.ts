@@ -7,9 +7,6 @@ import { CursorService } from 'src/app/services/cursor.service';
   selector: 'app-info',
   templateUrl: './info.page.html',
   styleUrls: ['./info.page.scss'],
-  animations: [
-    fadeInOnEnterAnimation({duration: 1500, delay: 1500})
-  ]
 })
 export class InfoComponent implements AfterViewInit {
   tooltip = '';

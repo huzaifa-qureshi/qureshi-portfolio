@@ -54,6 +54,13 @@ const projects =[
     image : './assets/Images/p4-i1.png',
   },
   {
+    name : 'Report Generator for QA ',
+    githubLink : 'https://github.com/huzaifa-qureshi/report-generator',
+    projectLink: 'https://report-generator-seven.vercel.app/main',
+    caption: 'Development | 2023',
+    image : './assets/Images/p9 -i1.jpg',
+  },
+  {
     name : 'Django Final Project',
     githubLink : 'https://github.com/huzaifa-qureshi/agfzb-CloudAppDevelopment_Capstone',
     projectLink: '',
@@ -73,9 +80,6 @@ const projects =[
   selector: 'app-projects',
   templateUrl: './projects.page.html',
   styleUrls: ['./projects.page.scss'],
-  animations: [
-    fadeInOnEnterAnimation({duration: 1500, delay: 1500}),
-  ]
 })
 export class ProjectsPage{
   hoverimage = '';

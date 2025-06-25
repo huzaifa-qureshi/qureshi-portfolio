@@ -1,5 +1,8 @@
-<div class="box" [@fadeOut]>
-  <p class="montserrat-bold" [@fadeInOnEnter]>
-    Huzaifa Qureshi's <span class="text-box montserrat">Portfolio</span>
-  </p>
+<div class="loader-container" #loaderContainer>
+  <div class="number-display" #numberDisplay>{{ currentNumber | number:'1.0-0' }}</div>
+  <div class="text-content" #textContent>
+    <p class="montserrat-bold">
+      Huzaifa Qureshi's <span class="text-box montserrat">Portfolio</span>
+    </p>
+  </div>
 </div>

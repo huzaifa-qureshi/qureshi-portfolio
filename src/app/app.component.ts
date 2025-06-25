@@ -59,8 +59,6 @@ export class AppComponent implements AfterViewInit {
   }
   
   ngAfterViewInit() {
-    this.isloading = false;
-
     gsap.registerPlugin(ScrollTrigger);
     
     // Create the curtain effect timeline
@@ -86,6 +84,7 @@ export class AppComponent implements AfterViewInit {
     curtainTimeline.to('.screen-3', {
       height: 'var(--frame-size)',
       duration: 0.5,
+      opacity: 1,
     }, 1);
 
     curtainTimeline.to('.screen-3', {
@@ -96,6 +95,7 @@ export class AppComponent implements AfterViewInit {
     curtainTimeline.to('.screen-4', {
       height: 'var(--frame-size)',
       duration: 0.5,
+      opacity: 1,
     }, 2);
 
 
@@ -107,20 +107,20 @@ export class AppComponent implements AfterViewInit {
     curtainTimeline.to('.bottom', {
       height: 'var(--frame-size)',
       duration: 0.5,
+      opacity: 1,
     }, 3); 
 
     this.maincontainersize = this.mainSize();
     this.screenSize.setSize(this.maincontainersize);
-    // this.loading();
+    
     // console.log(this.currentRoute)
     // if(this.currentRoute == '/main' || this.currentRoute == '' ){
     //   this.showToolTipFn("Scroll once to see Magic!");
     // }
   }
   //#endregion
-  // Navigation method for curtain effect
+  
   navigateToNextRoute() {
-    // Define your route sequence based on your actual routes
     const routes = ['main', 'projects', 'info', 'contact'];
     const currentRoute = this.currentRoute.replace('/', '') || 'main';
     const currentIndex = routes.indexOf(currentRoute);
@@ -160,11 +160,11 @@ export class AppComponent implements AfterViewInit {
     this.cursorService.expandCursor(false);
   }
 
-  loading(){
-    setTimeout(() =>{ 
-        this.isloading = false; 
-    }, 3000);
-  }
+  // loading(){
+  //   setTimeout(() =>{ 
+  //       this.isloading = false; 
+  //   }, 5000);
+  // }
 
   showToolTipFn(tip:string, showAfter:number = 8000) {
     this.tooltip = tip;

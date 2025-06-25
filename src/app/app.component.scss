@@ -145,6 +145,7 @@
 
     .screen-3, .screen-4{
         height: 0;
+        opacity: 0;
     }
 
     // Additional styles for curtain effect
@@ -166,7 +167,7 @@
 .curtain-elevated {
     .bottom {
         height: calc(100dvh - var(--frame-size)) !important;
-        
+        opacity: 0;
         .bl, .bc, .br {
             height: 100%;
         }
