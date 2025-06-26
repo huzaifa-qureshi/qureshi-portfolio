@@ -50,7 +50,18 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     gsap.registerPlugin(ScrollTrigger);
+    this.initAnimations();
     
+    this.maincontainersize = this.mainSize();
+    this.screenSize.setSize(this.maincontainersize);
+    
+    this.initialDimensions = { 
+      width: window.innerWidth, 
+      height: window.innerHeight 
+    };
+  }
+
+  private initAnimations() {
     const isMobile = window.innerWidth <= 768;
     
     const curtainTimeline = gsap.timeline({
@@ -112,14 +123,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
       });
     }
-
-    this.maincontainersize = this.mainSize();
-    this.screenSize.setSize(this.maincontainersize);
-    
-    this.initialDimensions = { 
-      width: window.innerWidth, 
-      height: window.innerHeight 
-    };
   }
   
   navigateToNextRoute() {
