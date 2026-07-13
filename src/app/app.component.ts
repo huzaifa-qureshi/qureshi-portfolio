@@ -37,15 +37,15 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     private navservice: NavService,
     private cursorService: CursorService,
   ) {
-    this.router.events.subscribe((ev) => {
-      if (ev instanceof NavigationEnd) {
-        this.currentRoute = ev.urlAfterRedirects;
-        this.transitionState = true;
-        setTimeout(() => {
-          this.transitionState = false;
-        }, 1000);
-      }
-    });
+    // this.router.events.subscribe((ev) => {
+    //   if (ev instanceof NavigationEnd) {
+    //     this.currentRoute = ev.urlAfterRedirects;
+    //     this.transitionState = true;
+    //     setTimeout(() => {
+    //       this.transitionState = false;
+    //     }, 1000);
+    //   }
+    // });
   }
 
   ngAfterViewInit() {

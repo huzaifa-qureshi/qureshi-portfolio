@@ -1,6 +1,6 @@
 <loader *ngIf="isloading"></loader>
 <cursor *ngIf="!breakpoint.isSmall"></cursor>
-<!-- <div
+<div
   class="main-container"
   [ngClass]="{
     toggle: collapseState,
@@ -21,9 +21,7 @@
   <div class="center" [ngClass]="{ transition: transitionState }">
     <div class="tc"></div>
     <div #mc class="mc">
-      <router-outlet>
-        <next-slide-btn *ngIf="breakpoint.isSmall"></next-slide-btn
-      ></router-outlet>
+      <router-outlet></router-outlet>
     </div>
     <div class="bc"></div>
   </div>
@@ -39,14 +37,14 @@
     <div class="br" [ngClass]="{ toggle: collapseState }"></div>
   </div>
 </div>
-<cursor *ngIf="!breakpoint.isSmall"></cursor>
+<!-- <cursor *ngIf="!breakpoint.isSmall"></cursor>
 <tooltip [tooltip]="tooltip" *ngIf="showToolTip && !breakpoint.isSmall"></tooltip> -->
 
 <mode-switch (isDarkMode)="toggleMode($event)"
   (mouseover)="onLinkHover()" (mouseout)="onLinkLeave()"
   ></mode-switch>
 <!-- Version 2 -->
-<div
+<!-- <div
   class="main-container"
   [ngClass]="{
     toggle: collapseState,
@@ -93,4 +91,4 @@
   </div>
   <div class="br"></div>
 </div>
-</div>
+</div> -->
